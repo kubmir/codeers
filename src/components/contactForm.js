@@ -5,7 +5,7 @@ import TextField from '@material-ui/core/TextField';
 
 const ContactFormWrapper = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: calc(50% - 10px) calc(50% - 10px);
   grid-row: auto auto;
   grid-column-gap: 20px;
   grid-row-gap: 20px;

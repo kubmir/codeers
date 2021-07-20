@@ -8,10 +8,11 @@ export const H2 = styled.h2`
 
 export const ItemsWrapper = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: calc(50% - 10px) calc(50% - 10px);
   grid-row: auto auto;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
+  max-width: 100%;
 
   @media only screen and (max-width: 600px) {
     display: block;

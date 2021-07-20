@@ -10,7 +10,7 @@ import WhyUs from '../components/whyUs';
 
 const IndexPage = () => (
   <Layout>
-    <Seo />
+    <Seo/>
     <MainInfo />
     <HowWeWork />
     <WhyUs />
