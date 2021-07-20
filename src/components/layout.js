@@ -10,12 +10,12 @@ const LogoWrapper = styled.div`
   max-width: 400px;
   height: 60px;
   padding: 30px 48px;
+  padding-left: 0;
 
   @media only screen and (max-width: 600px) {
     padding: 6px 24px;
+    padding-left: 0;
   }
-
-  padding-left: 0;
 `;
 const Logo = styled.img`
   height: 60px;

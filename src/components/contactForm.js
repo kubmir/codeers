@@ -6,6 +6,7 @@ import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
 import { withStyles } from '@material-ui/core/styles';
 import FormHelperText from '@material-ui/core/FormHelperText';
+import { H2 } from './shared';
 
 const CustomCheckbox = withStyles({
   root: {
@@ -74,6 +75,7 @@ const ContactForm = () => {
 
   return (
     <div id="contactForm">
+      <H2>Kontaktujte nás</H2>
       <ContactFormWrapper>
         <TextField
           required

@@ -28,17 +28,26 @@ const HighlightedText = styled.span`
   background-image: linear-gradient(to bottom, transparent 10px, #fbd116 10px, #fbd116 25px, transparent 25px);
   font-size: 55px;
   margin-top: 10px;
+  min-width: 72px;
+  display: flex;
+  justify-content: center;
 `;
 
 const DescriptionWrapper = styled.p`
   padding: 14px 8px;
   padding-bottom: 0px;
   margin-bottom: 0px;
+  margin-top: 0px;
 `;
 const DetailsList = styled.ul`
   margin: 0;
-  padding-left: 60px;
+  padding-left: 92px;
 `;
+
+const ListItem = styled.li`
+  margin: 8px 0;
+`;
+
 const howWeWorkData = [
   {
     order: '01',
@@ -137,7 +146,7 @@ const HowWeWork = () => {
             <AccordionDetails>
               <DetailsList>
                 {item.details.map((detail, index) => (
-                  <li key={index}>{detail}</li>
+                  <ListItem key={index}>{detail}</ListItem>
                 ))}
               </DetailsList>
             </AccordionDetails>

@@ -5,13 +5,9 @@ import design from '../svg/design.svg';
 import optimization from '../svg/optimization.svg';
 import strategy from '../svg/strategy.svg';
 
+import { H2 } from './shared';
 import './layout.css';
 
-const WhyUsHeading = styled.h2`
-  font-size: 40px;
-  font-weight: 400;
-  margin-top: 50px;
-`;
 const ReasonsContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -72,7 +68,7 @@ const whyUsData = [
 const WhyUs = () => {
   return (
     <>
-      <WhyUsHeading>Proč zvolit nás</WhyUsHeading>
+      <H2>Proč zvolit nás</H2>
       <ReasonsContainer>
         {whyUsData.map((item) => (
           <Reason key={item.title}>
