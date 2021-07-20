@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import Collaboration from '../components/collaboration';
-import ContactForm from '../components/contactForm';
+import ContactForm from '../components/contactForm/contactForm';
 import HowWeWork from '../components/howWeWork';
 import Layout from '../components/layout';
 import MainInfo from '../components/mainInfo';
