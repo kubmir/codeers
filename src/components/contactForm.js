@@ -2,6 +2,19 @@ import * as React from 'react';
 import styled from 'styled-components';
 
 import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import { withStyles } from '@material-ui/core/styles';
+import FormHelperText from '@material-ui/core/FormHelperText';
+
+const CustomCheckbox = withStyles({
+  root: {
+    '&$checked': {
+      color: '#fbd116',
+    },
+  },
+  checked: {},
+})((props) => <Checkbox color="default" style={{ color: props.error ? '#f44336' : '' }} {...props} />);
 
 const ContactFormWrapper = styled.div`
   display: grid;
@@ -23,7 +36,7 @@ export const TextAreaWrapper = styled.div`
 `;
 
 export const SendButtonWrapper = styled.button`
-  margin-top: 20px;
+  margin-top: 16px;
 `;
 
 const ContactForm = () => {
@@ -37,9 +50,26 @@ const ContactForm = () => {
     setContactFormData(newState);
   };
 
-  const onSubmit = (event) => {
+  const onSubmit = () => {
     setSubmitClicked(true);
-    console.log(contactFormData);
+
+    if (
+      contactFormData.name &&
+      contactFormData.surname &&
+      contactFormData.gdprConsent &&
+      contactFormData.email &&
+      contactFormData.project
+    ) {
+      //TODO send mail
+      console.log(contactFormData);
+    }
+  };
+
+  const handleChange = (event) => {
+    const newState = { ...contactFormData };
+    newState[event.target.id] = event.target.checked;
+
+    setContactFormData(newState);
   };
 
   return (
@@ -106,6 +136,21 @@ const ContactForm = () => {
           error={submitClicked && !contactFormData.project}
         />
       </TextAreaWrapper>
+      <FormControlLabel
+        style={{ width: '100%', marginTop: '8px' }}
+        control={
+          <CustomCheckbox
+            id="gdprConsent"
+            error={submitClicked && !contactFormData.gdprConsent}
+            checked={contactFormData.gdprConsent}
+            onChange={handleChange}
+          />
+        }
+        label="Souhlas se zpracováním osobních údajů"
+      />
+      {submitClicked && !contactFormData.gdprConsent && (
+        <FormHelperText style={{ color: '#f44336' }}>Povinný údaj</FormHelperText>
+      )}
       <SendButtonWrapper onClick={onSubmit}>Odeslat</SendButtonWrapper>
     </div>
   );
