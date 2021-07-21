@@ -1,8 +1,10 @@
 import * as React from 'react';
 
+import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
+
 import { H2 } from '../shared';
 import { CustomCheckbox, ContactFormWrapper, TextAreaWrapper, SendButtonWrapper } from './styled';
 
@@ -11,6 +13,7 @@ import './styles.css';
 const ContactForm = () => {
   const [submitClicked, setSubmitClicked] = React.useState(false);
   const [contactFormData, setContactFormData] = React.useState({});
+  const [isEmailSent, setIsEmailSent] = React.useState(false);
 
   const onChange = (event) => {
     const newState = { ...contactFormData };
@@ -19,7 +22,7 @@ const ContactForm = () => {
     setContactFormData(newState);
   };
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setSubmitClicked(true);
 
     if (
@@ -29,8 +32,12 @@ const ContactForm = () => {
       contactFormData.email &&
       contactFormData.project
     ) {
-      //TODO send mail
-      console.log(contactFormData);
+      try {
+        await axios.post('http://ayurtest.eu/mail.php', contactFormData);
+        setIsEmailSent(true);
+      } catch (error) {
+        console.error(error);
+      }
     }
   };
 
@@ -40,6 +47,10 @@ const ContactForm = () => {
 
     setContactFormData(newState);
   };
+
+  if (isEmailSent) {
+    // TODO successfully sent
+  }
 
   return (
     <div id="contactForm">
@@ -107,7 +118,11 @@ const ContactForm = () => {
         />
       </TextAreaWrapper>
       <FormControlLabel
-        style={{ width: '100%', marginTop: '8px', color: submitClicked && !contactFormData.gdprConsent ? '#f44336' : '#000000' }}
+        style={{
+          width: '100%',
+          marginTop: '8px',
+          color: submitClicked && !contactFormData.gdprConsent ? '#f44336' : '#000000',
+        }}
         control={
           <CustomCheckbox
             id="gdprConsent"
