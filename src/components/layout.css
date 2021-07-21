@@ -7,7 +7,6 @@ html {
 }
 
 body {
-  margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
@@ -15,7 +14,9 @@ body {
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
-  padding: 0 8px;
+  padding: 0 24px;
+  max-width: 1380px;
+  margin: 0 auto;
 }
 
 button {
@@ -121,4 +122,10 @@ h6 {
   text-rendering: optimizeLegibility;
   font-size: 0.78405rem;
   line-height: 1.1;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 0 8px;
+  }
 }

@@ -107,7 +107,7 @@ const ContactForm = () => {
         />
       </TextAreaWrapper>
       <FormControlLabel
-        style={{ width: '100%', marginTop: '8px' }}
+        style={{ width: '100%', marginTop: '8px', color: submitClicked && !contactFormData.gdprConsent ? '#f44336' : '#000000' }}
         control={
           <CustomCheckbox
             id="gdprConsent"
