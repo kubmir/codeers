@@ -19,33 +19,49 @@ const FlexContainer = styled.div`
 `;
 
 const HowWeWorkItemHeading = styled.h3`
-  font-size: 35px;
+  font-size: 32px;
   margin-bottom: 0;
-  padding-left: 8px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
 `;
 
 const HighlightedText = styled.span`
-  background-image: linear-gradient(to bottom, transparent 10px, #fbd116 10px, #fbd116 25px, transparent 25px);
-  font-size: 55px;
+  background-image: linear-gradient(to bottom, transparent 10px, #e8c81d 10px, #e8c81d 25px, transparent 25px);
+  font-size: 56px;
   margin-top: 10px;
   min-width: 72px;
   display: flex;
   justify-content: center;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 48px;
+    min-width: 64px;
+  }
 `;
 
 const DescriptionWrapper = styled.p`
-  padding: 14px 8px;
+  padding: 16px 0px;
   padding-bottom: 0px;
   margin-bottom: 0px;
   margin-top: 0px;
 `;
 const DetailsList = styled.ul`
   margin: 0;
-  padding-left: 92px;
+  padding-left: 100px;
 `;
 
 const ListItem = styled.li`
   margin: 8px 0;
+`;
+
+const HowWeWorkTextItemWrapper = styled.div`
+  padding-left: 24px;
+
+  @media only screen and (max-width: 600px) {
+    padding-left: 16px;
+  }
 `;
 
 const howWeWorkData = [
@@ -136,10 +152,10 @@ const HowWeWork = () => {
               <HowWeWorkItemWrapper>
                 <FlexContainer>
                   <HighlightedText>{item.order}</HighlightedText>
-                  <div>
+                  <HowWeWorkTextItemWrapper>
                     <HowWeWorkItemHeading>{item.title}</HowWeWorkItemHeading>
                     <DescriptionWrapper>{item.description}</DescriptionWrapper>
-                  </div>
+                  </HowWeWorkTextItemWrapper>
                 </FlexContainer>
               </HowWeWorkItemWrapper>
             </AccordionSummary>

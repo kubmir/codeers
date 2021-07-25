@@ -1,11 +1,12 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "codeers-portfolio-page",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Portfolio page for software company Codeers",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Miroslav Kubus <kubus.miro@gmail.com>",
   "dependencies": {
     "@fontsource/red-hat-display": "^4.5.0",
+    "@fontsource/red-hat-text": "^4.5.0",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.11.2",
     "axios": "^0.21.1",

@@ -26,10 +26,10 @@ const collaborationSteps = [
 
 const CollaborationItem = styled.div`
   padding: 35px 30px;
-  background: #fafafb;
+  background: #e1e1e2;
   border-style: solid;
   border-width: 3px;
-  border-color: #fafafb;
+  border-color: #e1e1e2;
   border-radius: 20px;
   box-shadow: none;
 

@@ -1,7 +1,7 @@
 html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
-  font: 112.5%/1.45em 'Red Hat Display';
+  font: 112.5%/1.45em 'Red Hat Text';
   box-sizing: border-box;
   overflow-y: scroll;
 }
@@ -10,7 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: hsla(0, 0%, 0%, 0.8);
-  font-family: 'Red Hat Display';
+  font-family: 'Red Hat Text';
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
@@ -20,8 +20,7 @@ body {
 }
 
 button {
-  font-family: 'Red Hat Display';
-  font-weight: 500;
+  font-weight: 600;
   border-color: #303030;
   background: #303030;
   color: #fff;
@@ -32,8 +31,10 @@ button {
   border-width: 2px;
   padding: 0.75rem 1.6rem;
   text-transform: uppercase;
+  font-size: 1rem;
 }
 h1 {
+  font-family: 'Red Hat Display';
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -49,6 +50,7 @@ h1 {
   line-height: 1.1;
 }
 h2 {
+  font-family: 'Red Hat Display';
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -64,6 +66,7 @@ h2 {
   line-height: 1.1;
 }
 h3 {
+  font-family: 'Red Hat Display';
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -79,6 +82,7 @@ h3 {
   line-height: 1.1;
 }
 h4 {
+  font-family: 'Red Hat Display';
   margin-left: 0;
   margin-right: 0;
   margin-top: 0;
@@ -93,39 +97,30 @@ h4 {
   font-size: 1rem;
   line-height: 1.1;
 }
-h5 {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
-  color: inherit;
-  font-weight: bold;
-  text-rendering: optimizeLegibility;
-  font-size: 0.85028rem;
-  line-height: 1.1;
-}
-h6 {
-  margin-left: 0;
-  margin-right: 0;
-  margin-top: 0;
-  padding-bottom: 0;
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 0;
-  margin-bottom: 1.45rem;
-  color: inherit;
-  font-weight: bold;
-  text-rendering: optimizeLegibility;
-  font-size: 0.78405rem;
-  line-height: 1.1;
-}
 
 @media (max-width: 600px) {
   body {
     padding: 0 8px;
+  }
+
+  h1 {
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+    line-height: 1;
+  }
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+    line-height: 1;
+  }
+  h3 {
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+    line-height: 1.1;
+  }
+  h4 {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    line-height: 1;
   }
 }

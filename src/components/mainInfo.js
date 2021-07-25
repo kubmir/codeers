@@ -4,14 +4,20 @@ import styled from 'styled-components';
 import './layout.css';
 
 const MainHeading = styled.h1`
-  font-size: 46px;
-  font-weight: 600;
+  font-size: 60px;
+  font-weight: 700;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 40px;
+  }
 `;
 
 const MainDescription = styled.p`
-  font-weight: 600;
+  font-weight: 700;
 `;
-const StartCooperationButton = styled.button``;
+const StartCooperationButton = styled.button`
+  margin-top: 24px;
+`;
 
 const MainInfo = () => {
   const onButtonClick = () =>

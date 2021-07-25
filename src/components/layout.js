@@ -4,7 +4,9 @@ import styled from 'styled-components';
 
 import logo from '../svg/codeers-logo.svg';
 import './layout.css';
+
 import '@fontsource/red-hat-display';
+import '@fontsource/red-hat-text';
 
 const LogoWrapper = styled.div`
   max-width: 400px;
@@ -13,16 +15,17 @@ const LogoWrapper = styled.div`
   padding-left: 0;
 
   @media only screen and (max-width: 600px) {
-    padding: 6px 24px;
+    padding: 20px 0px;
     padding-left: 0;
   }
 `;
+
 const Logo = styled.img`
   height: 60px;
   margin: 0;
 
   @media only screen and (max-width: 600px) {
-    height: 24px;
+    height: 48px;
   }
 `;
 

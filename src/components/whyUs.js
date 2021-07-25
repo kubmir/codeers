@@ -25,12 +25,17 @@ const ReasonImageWrapper = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  margin: 16px auto;
+  margin: 48px auto;
 `;
 
-const ReasonTitle = styled.h5`
+const ReasonTitle = styled.h4`
   font-size: 24px;
   text-align: center;
+  margin-top: 32px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 20px;
+  }
 `;
 
 const ReasonDescription = styled.p`

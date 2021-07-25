@@ -23,7 +23,7 @@
         }
 
         $message = "<html><body>";
-        $message .= "<h1 style=\"color:#fbd116;font-size:24px;margin:16px;text-align:center;\">Nový dotaz na projekt od zákazníka pro Codeers</h1>";
+        $message .= "<h1 style=\"color:#e8c81d;font-size:24px;margin:16px;text-align:center;\">Nový dotaz na projekt od zákazníka pro Codeers</h1>";
         $message .= "<p style=\"color:#000000;font-size:18px;\"><i>Zákazník:</i> {$name} {$surname}</p>";
         $message .= "<p style=\"color:#000000;font-size:18px;\"><i>E-mail:</i> {$email}</p>";
 

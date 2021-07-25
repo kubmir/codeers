@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import Collaboration from '../components/collaboration';
 import ContactForm from '../components/contactForm/contactForm';
+import Footer from '../components/footer';
 import HowWeWork from '../components/howWeWork';
 import Layout from '../components/layout';
 import MainInfo from '../components/mainInfo';
@@ -16,6 +17,7 @@ const IndexPage = () => (
     <WhyUs />
     <Collaboration />
     <ContactForm />
+    <Footer />
   </Layout>
 );
 

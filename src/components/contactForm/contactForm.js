@@ -10,6 +10,8 @@ import { CustomCheckbox, ContactFormWrapper, TextAreaWrapper, SendButtonWrapper 
 
 import './styles.css';
 
+const CZECH_PHONE_NUMBER_REGEX = /([+]?\d{1,3}[. \s]?)?(\d{9}?)/g;
+
 const ContactForm = () => {
   const [submitClicked, setSubmitClicked] = React.useState(false);
   const [contactFormData, setContactFormData] = React.useState({});
@@ -52,12 +54,13 @@ const ContactForm = () => {
     // TODO successfully sent
   }
 
+  const isPhoneInvalid = !contactFormData.phone?.match(CZECH_PHONE_NUMBER_REGEX);
+
   return (
     <div id="contactForm">
       <H2>Kontaktujte nás</H2>
       <ContactFormWrapper>
         <TextField
-          required
           id="name"
           label="Jméno"
           variant="outlined"
@@ -67,7 +70,6 @@ const ContactForm = () => {
           error={submitClicked && !contactFormData.name}
         />
         <TextField
-          required
           id="surname"
           label="Příjmení"
           variant="outlined"
@@ -77,7 +79,6 @@ const ContactForm = () => {
           error={submitClicked && !contactFormData.surname}
         />
         <TextField
-          required
           id="email"
           label="E-mail"
           variant="outlined"
@@ -88,15 +89,17 @@ const ContactForm = () => {
         />
         <TextField
           id="phone"
-          label="Telefon"
-          type="number"
+          label="Telefon (volitelný)"
+          type="tel"
           variant="outlined"
           onChange={onChange}
           value={contactFormData.phone}
+          error={submitClicked && contactFormData.phone && isPhoneInvalid}
+          helperText={submitClicked && contactFormData.phone && isPhoneInvalid ? 'Zadejte validní telefonní číslo' : ''}
         />
         <TextField
           id="company"
-          label="Společnost"
+          label="Společnost (volitelný)"
           variant="outlined"
           onChange={onChange}
           value={contactFormData.company}
