@@ -8,6 +8,7 @@ import Layout from '../components/layout';
 import MainInfo from '../components/mainInfo';
 import Seo from '../components/seo';
 import WhyUs from '../components/whyUs';
+import References from '../components/references';
 
 const IndexPage = () => (
   <Layout>
@@ -16,6 +17,7 @@ const IndexPage = () => (
     <HowWeWork />
     <WhyUs />
     <Collaboration />
+    <References />
     <ContactForm />
     <Footer />
   </Layout>
