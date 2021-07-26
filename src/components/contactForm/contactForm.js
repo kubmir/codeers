@@ -2,11 +2,9 @@ import * as React from 'react';
 
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormHelperText from '@material-ui/core/FormHelperText';
 
 import { H2 } from '../shared';
-import { CustomCheckbox, ContactFormWrapper, TextAreaWrapper, SendButtonWrapper } from './styled';
+import { ContactFormWrapper, TextAreaWrapper, SendButtonWrapper, GdprInfoWrapper } from './styled';
 
 import './styles.css';
 
@@ -30,7 +28,6 @@ const ContactForm = () => {
     if (
       contactFormData.name &&
       contactFormData.surname &&
-      contactFormData.gdprConsent &&
       contactFormData.email &&
       contactFormData.project
     ) {
@@ -43,13 +40,6 @@ const ContactForm = () => {
     }
   };
 
-  const handleChange = (event) => {
-    const newState = { ...contactFormData };
-    newState[event.target.id] = event.target.checked;
-
-    setContactFormData(newState);
-  };
-
   if (isEmailSent) {
     // TODO successfully sent
   }
@@ -58,7 +48,7 @@ const ContactForm = () => {
 
   return (
     <div id="contactForm">
-      <H2>Kontaktujte nás</H2>
+      <H2>kontaktujte nás</H2>
       <ContactFormWrapper>
         <TextField
           id="name"
@@ -89,7 +79,7 @@ const ContactForm = () => {
         />
         <TextField
           id="phone"
-          label="Telefon (volitelný)"
+          label="Telefon (nepovinně)"
           type="tel"
           variant="outlined"
           onChange={onChange}
@@ -99,7 +89,7 @@ const ContactForm = () => {
         />
         <TextField
           id="company"
-          label="Společnost (volitelný)"
+          label="Společnost (nepovinně)"
           variant="outlined"
           onChange={onChange}
           value={contactFormData.company}
@@ -108,7 +98,7 @@ const ContactForm = () => {
       <TextAreaWrapper>
         <TextField
           id="project"
-          label="Popište Váš projekt"
+          label="Stručně popište svůj projekt (nepovinně)"
           multiline
           minRows={8}
           maxRows={10}
@@ -120,26 +110,8 @@ const ContactForm = () => {
           error={submitClicked && !contactFormData.project}
         />
       </TextAreaWrapper>
-      <FormControlLabel
-        style={{
-          width: '100%',
-          marginTop: '8px',
-          color: submitClicked && !contactFormData.gdprConsent ? '#f44336' : '#000000',
-        }}
-        control={
-          <CustomCheckbox
-            id="gdprConsent"
-            error={submitClicked && !contactFormData.gdprConsent}
-            checked={contactFormData.gdprConsent}
-            onChange={handleChange}
-          />
-        }
-        label="Souhlas se zpracováním osobních údajů"
-      />
-      {submitClicked && !contactFormData.gdprConsent && (
-        <FormHelperText style={{ color: '#f44336' }}>Povinný údaj</FormHelperText>
-      )}
-      <SendButtonWrapper onClick={onSubmit}>Odeslat</SendButtonWrapper>
+      <GdprInfoWrapper>Odesláním souhlasíte se zpracováním osobních údajů</GdprInfoWrapper>
+      <SendButtonWrapper onClick={onSubmit}>odeslat</SendButtonWrapper>
     </div>
   );
 };

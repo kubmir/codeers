@@ -21,9 +21,11 @@ const FlexContainer = styled.div`
 const HowWeWorkItemHeading = styled.h3`
   font-size: 32px;
   margin-bottom: 0;
+  padding-top: 8px;
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
+    padding-top: 10px;
   }
 `;
 
@@ -64,16 +66,33 @@ const HowWeWorkTextItemWrapper = styled.div`
   }
 `;
 
+const WeCanHelpYouMessageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const WeCanHelpYouMessage = styled.p`
+  color: #000000;
+  font-size: 36px;
+  background-image: linear-gradient(to bottom, transparent 15px, #e8c81d 15px, #e8c81d 36px, transparent 36px);
+  text-align: center;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+  }
+`;
+
 const howWeWorkData = [
   {
     order: '01',
-    title: 'Produktová strategie',
+    title: 'produktová strategie',
     description: 'Společně definujeme, jak dokážeme vaši vizi zhmotnit pomocí aplikace.',
     details: ['zmapování potřeb', 'průzkum trhu', 'analýza možností', 'definice produktu', 'stanovení budgetu'],
   },
   {
     order: '02',
-    title: 'Produktový design',
+    title: 'produktový design',
     description:
       'Posuneme od strategie k reálnému zadání, abychom si vše vyjasnili než se pustíme do samotného vývoje.',
     details: [
@@ -88,7 +107,7 @@ const howWeWorkData = [
   },
   {
     order: '03',
-    title: 'Vývoj aplikace',
+    title: 'vývoj aplikace',
     description: 'Zadání máme vyjasněno. Začínáme se samotným vývojem aplikace.',
     details: [
       'iterativní vývoj',
@@ -104,7 +123,7 @@ const howWeWorkData = [
   },
   {
     order: '04',
-    title: 'Růst a optimalizace',
+    title: 'růst a optimalizace',
     description: 'Máme hotovo, ale vždycky je co zlepšovat.',
     details: [
       'analýza nefunkčních částí aplikace',
@@ -133,19 +152,27 @@ const useStyles = makeStyles((theme) =>
 
 const HowWeWork = () => {
   const classes = useStyles();
+  const [isDesktop, setIsDesktop] = React.useState(false);
+
+  React.useLayoutEffect(() => {
+    if (window.innerWidth > 600) {
+      setIsDesktop(true);
+    }
+  }, [setIsDesktop]);
 
   return (
     <>
-      <H2>Jak pracujeme</H2>
+      <H2>jak pracujeme</H2>
       <ItemsWrapper>
         {howWeWorkData.map((item) => (
           <Accordion
             key={item.order}
+            expanded={isDesktop}
             classes={{
               root: classes.rootWithoutBorders,
             }}>
             <AccordionSummary
-              expandIcon={<ExpandMoreIcon />}
+              expandIcon={isDesktop ? <div /> : <ExpandMoreIcon />}
               classes={{
                 root: classes.summaryRoot,
               }}>
@@ -169,6 +196,9 @@ const HowWeWork = () => {
           </Accordion>
         ))}
       </ItemsWrapper>
+      <WeCanHelpYouMessageWrapper>
+        <WeCanHelpYouMessage>dokážeme vám pomoci v jakékoliv fázi vašeho projektu</WeCanHelpYouMessage>
+      </WeCanHelpYouMessageWrapper>
     </>
   );
 };

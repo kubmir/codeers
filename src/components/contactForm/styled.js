@@ -33,5 +33,15 @@ export const TextAreaWrapper = styled.div`
 `;
 
 export const SendButtonWrapper = styled.button`
-  margin-top: 16px;
+  width: 235px;
+`;
+
+export const GdprInfoWrapper = styled.p`
+  margin: 25px 0;
+  font-size: 20px;
+
+  @media only screen and (max-width: 600px) {
+    margin: 30px 0;
+    font-size: 16px;
+  }
 `;

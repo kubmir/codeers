@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
 export const H2 = styled.h2`
-  font-size: 40px;
-  font-weight: 600;
-  margin-top: 96px;
+  font-size: 64px;
+  font-weight: 700;
+  margin-top: 160px;
 
   @media only screen and (max-width: 600px) {
-    font-size: 28px;
-    margin-top: 72px;
+    font-size: 32px;
+    margin-top: 120px;
   }
 `;
 

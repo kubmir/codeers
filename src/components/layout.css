@@ -21,16 +21,15 @@ body {
 
 button {
   font-weight: 600;
-  border-color: #303030;
-  background: #303030;
-  color: #fff;
+  border-color: #e8c81d;
+  background: #e8c81d;
+  color: #000000;
   cursor: pointer;
   border-style: solid;
   border-color: transparent;
   border-radius: 5px;
   border-width: 2px;
   padding: 0.75rem 1.6rem;
-  text-transform: uppercase;
   font-size: 1rem;
 }
 h1 {

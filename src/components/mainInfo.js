@@ -4,19 +4,45 @@ import styled from 'styled-components';
 import './layout.css';
 
 const MainHeading = styled.h1`
-  font-size: 60px;
+  font-size: 64px;
   font-weight: 700;
+  margin-top: 280px;
+  line-height: 86px;
 
   @media only screen and (max-width: 600px) {
-    font-size: 40px;
+    font-size: 32px;
+    line-height: 42px;
   }
 `;
 
 const MainDescription = styled.p`
-  font-weight: 700;
+  margin-top: 40px;
+  font-size: 34px;
+  line-height: 46px;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+    line-height: 32px;
+  }
 `;
-const StartCooperationButton = styled.button`
+
+const StartCooperation = styled.p`
+  color: #000000;
+  font-size: 36px;
+  background-image: linear-gradient(to bottom, transparent 15px, #e8c81d 15px, #e8c81d 36px, transparent 36px);
+  text-align: center;
+  font-weight: 700;
   margin-top: 24px;
+  margin-bottom: 0px;
+  
+  @media only screen and (max-width: 600px) {
+    font-size: 24px;
+    margin-top: 16px;
+  }
+`;
+
+const CooperationWrapper = styled.div`
+  display: flex;
 `;
 
 const MainInfo = () => {
@@ -28,15 +54,17 @@ const MainInfo = () => {
   return (
     <>
       <MainHeading>
-        Mobilní aplikace.
+        mobilní aplikace
         <br />
-        Velké věci na malém prostoru.
+        velké věci na malém prostoru
       </MainHeading>
       <MainDescription>
         Jsme vývojářská a poradenská firma. Specializujeme se na integraci nativních mobilních aplikací do Vašeho
         podnikání.
       </MainDescription>
-      <StartCooperationButton onClick={onButtonClick}>Začít Spolupráci</StartCooperationButton>
+      <CooperationWrapper>
+        <StartCooperation onClick={onButtonClick}>chci spolupracovat</StartCooperation>
+      </CooperationWrapper>
     </>
   );
 };
