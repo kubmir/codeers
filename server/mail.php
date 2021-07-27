@@ -9,7 +9,6 @@
         $sender = "postmaster@ayurtest.eu";
 
         $name = $post["name"];
-        $surname = $post["surname"];
         $email = $post["email"];
         $project = $post["project"];
         $number = $post["number"];
@@ -18,13 +17,13 @@
         $to = "kubus.miro@gmail.com";
         $subject = "Codeers - nový dotaz od zákazníka";
 
-        if(empty($name) || empty($surname) || empty($email) || empty($project)) {
+        if(empty($name) || empty($email)) {
             exit("Error while sending email.");
         }
 
         $message = "<html><body>";
         $message .= "<h1 style=\"color:#e8c81d;font-size:24px;margin:16px;text-align:center;\">Nový dotaz na projekt od zákazníka pro Codeers</h1>";
-        $message .= "<p style=\"color:#000000;font-size:18px;\"><i>Zákazník:</i> {$name} {$surname}</p>";
+        $message .= "<p style=\"color:#000000;font-size:18px;\"><i>Zákazník:</i> {$name}</p>";
         $message .= "<p style=\"color:#000000;font-size:18px;\"><i>E-mail:</i> {$email}</p>";
 
         if (!empty($number)) {

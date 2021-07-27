@@ -12,6 +12,11 @@ import './layout.css';
 
 const HowWeWorkItemWrapper = styled.div`
   width: 100%;
+  margin-top: ${(props) => (props.order > 2 ? '40px' : '0px')};
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 0px;
+  }
 `;
 
 const FlexContainer = styled.div`
@@ -22,6 +27,7 @@ const HowWeWorkItemHeading = styled.h3`
   font-size: 32px;
   margin-bottom: 0;
   padding-top: 8px;
+  font-weight: 400;
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -44,14 +50,16 @@ const HighlightedText = styled.span`
 `;
 
 const DescriptionWrapper = styled.p`
-  padding: 16px 0px;
   padding-bottom: 0px;
   margin-bottom: 0px;
-  margin-top: 0px;
+  margin-top: 18px;
+
+  @media only screen and (max-width: 600px) {
+    margin-top: 14px;
+  }
 `;
 const DetailsList = styled.ul`
-  margin: 0;
-  padding-left: 100px;
+  margin: 18px 0 0;
 `;
 
 const ListItem = styled.li`
@@ -70,13 +78,22 @@ const WeCanHelpYouMessageWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 40px;
+
+  @media only screen and (max-width: 780px) {
+    display: block;
+    margin-top: 32px;
+  }
 `;
 
-const WeCanHelpYouMessage = styled.p`
+const WeCanHelpYouMessage = styled.span`
   color: #000000;
   font-size: 36px;
-  background-image: linear-gradient(to bottom, transparent 15px, #e8c81d 15px, #e8c81d 36px, transparent 36px);
-  text-align: center;
+  background: linear-gradient(to bottom, transparent 15px, #e8c81d 15px, #e8c81d 36px, transparent 36px);
+
+  @media only screen and (max-width: 780px) {
+    background: repeating-linear-gradient(to bottom, transparent 0% 50%, #e8c81d 50% 100%);
+  }
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
@@ -146,6 +163,7 @@ const useStyles = makeStyles((theme) =>
     },
     summaryRoot: {
       padding: 0,
+      margin: '16px 0 -8px',
     },
   }),
 );
@@ -160,41 +178,58 @@ const HowWeWork = () => {
     }
   }, [setIsDesktop]);
 
+  const getTitle = (item) => (
+    <HowWeWorkItemWrapper order={item.order}>
+      <FlexContainer>
+        <HighlightedText>{item.order}</HighlightedText>
+        <HowWeWorkTextItemWrapper>
+          <HowWeWorkItemHeading>{item.title}</HowWeWorkItemHeading>
+        </HowWeWorkTextItemWrapper>
+      </FlexContainer>
+    </HowWeWorkItemWrapper>
+  );
+
+  const getDescription = (item) => (
+    <>
+      {isDesktop && <DescriptionWrapper>{item.description}</DescriptionWrapper>}
+      <DetailsList>
+        {item.details.map((detail, index) => (
+          <ListItem key={index}>{detail}</ListItem>
+        ))}
+      </DetailsList>
+    </>
+  );
+
   return (
     <>
       <H2>jak pracujeme</H2>
       <ItemsWrapper>
-        {howWeWorkData.map((item) => (
-          <Accordion
-            key={item.order}
-            expanded={isDesktop}
-            classes={{
-              root: classes.rootWithoutBorders,
-            }}>
-            <AccordionSummary
-              expandIcon={isDesktop ? <div /> : <ExpandMoreIcon />}
+        {howWeWorkData.map((item) =>
+          isDesktop ? (
+            <div>
+              {getTitle(item)}
+              {getDescription(item)}
+            </div>
+          ) : (
+            <Accordion
+              key={item.order}
               classes={{
-                root: classes.summaryRoot,
+                root: classes.rootWithoutBorders,
               }}>
-              <HowWeWorkItemWrapper>
-                <FlexContainer>
-                  <HighlightedText>{item.order}</HighlightedText>
-                  <HowWeWorkTextItemWrapper>
-                    <HowWeWorkItemHeading>{item.title}</HowWeWorkItemHeading>
-                    <DescriptionWrapper>{item.description}</DescriptionWrapper>
-                  </HowWeWorkTextItemWrapper>
-                </FlexContainer>
-              </HowWeWorkItemWrapper>
-            </AccordionSummary>
-            <AccordionDetails>
-              <DetailsList>
-                {item.details.map((detail, index) => (
-                  <ListItem key={index}>{detail}</ListItem>
-                ))}
-              </DetailsList>
-            </AccordionDetails>
-          </Accordion>
-        ))}
+              <AccordionSummary
+                expandIcon={<ExpandMoreIcon />}
+                classes={{
+                  root: classes.summaryRoot,
+                }}>
+                <div>
+                  {getTitle(item)}
+                  <DescriptionWrapper>{item.description}</DescriptionWrapper>
+                </div>
+              </AccordionSummary>
+              <AccordionDetails style={{ paddingLeft: 0, display: 'block' }}>{getDescription(item)}</AccordionDetails>
+            </Accordion>
+          ),
+        )}
       </ItemsWrapper>
       <WeCanHelpYouMessageWrapper>
         <WeCanHelpYouMessage>dokážeme vám pomoci v jakékoliv fázi vašeho projektu</WeCanHelpYouMessage>

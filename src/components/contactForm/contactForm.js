@@ -27,9 +27,7 @@ const ContactForm = () => {
 
     if (
       contactFormData.name &&
-      contactFormData.surname &&
-      contactFormData.email &&
-      contactFormData.project
+      contactFormData.email
     ) {
       try {
         await axios.post('http://ayurtest.eu/mail.php', contactFormData);
@@ -58,15 +56,6 @@ const ContactForm = () => {
           onChange={onChange}
           value={contactFormData.name}
           error={submitClicked && !contactFormData.name}
-        />
-        <TextField
-          id="surname"
-          label="Příjmení"
-          variant="outlined"
-          helperText={submitClicked && !contactFormData.surname ? 'Povinný údaj' : ''}
-          onChange={onChange}
-          value={contactFormData.surname}
-          error={submitClicked && !contactFormData.surname}
         />
         <TextField
           id="email"
@@ -103,11 +92,9 @@ const ContactForm = () => {
           minRows={8}
           maxRows={10}
           variant="outlined"
-          helperText={submitClicked && !contactFormData.project ? 'Povinný údaj' : ''}
           fullWidth={true}
           onChange={onChange}
           value={contactFormData.project}
-          error={submitClicked && !contactFormData.project}
         />
       </TextAreaWrapper>
       <GdprInfoWrapper>Odesláním souhlasíte se zpracováním osobních údajů</GdprInfoWrapper>

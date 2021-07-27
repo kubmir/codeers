@@ -44,7 +44,7 @@ const CollaborationItemTitle = styled.p`
 const CollaborationItem = styled.div`
   margin: 40px 0px 18px 100px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 780px) {
     margin: 32px 0px 8px 0px;
   }
 `;
@@ -64,13 +64,13 @@ const CollaborationWrapper = styled.div`
   display: flex;
   flex-direction: row;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 780px) {
     flex-direction: column;
   }
 `;
 
 const HowWeDoItImage = styled.img`
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 780px) {
     max-width: 90%;
     margin: 0 auto 32px auto;
   }

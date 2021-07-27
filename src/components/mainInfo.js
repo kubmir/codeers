@@ -34,6 +34,7 @@ const StartCooperation = styled.p`
   font-weight: 700;
   margin-top: 24px;
   margin-bottom: 0px;
+  cursor: pointer;
   
   @media only screen and (max-width: 600px) {
     font-size: 24px;

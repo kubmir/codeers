@@ -11,7 +11,10 @@ import mm from '../svg/mm.svg';
 import './layout.css';
 
 const FullWidthReferenceImage = styled.img`
-  @media only screen and (max-width: 600px) {
+  filter: grayscale(100%);
+
+  @media only screen and (max-width: 780px) {
+    max-width: 90%;
     margin: 24px auto;
   }
 `;
@@ -21,9 +24,8 @@ const ReferencesWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 780px) {
     flex-direction: column;
-    align-items: space-between;
   }
 `;
 
