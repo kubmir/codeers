@@ -34,10 +34,9 @@ const References = () => {
     <>
       <H2>umíme přinést výsledky</H2>
       <ReferencesWrapper>
-        <FullWidthReferenceImage src={notino} />
-        <FullWidthReferenceImage src={mm} />
-        <FullWidthReferenceImage src={cyan} />
-        <FullWidthReferenceImage src={iba} />
+        {[notino, mm, cyan, iba].map((reference) => (
+          <FullWidthReferenceImage src={reference} />
+        ))}
       </ReferencesWrapper>
     </>
   );

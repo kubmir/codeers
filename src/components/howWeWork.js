@@ -6,7 +6,7 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import * as React from 'react';
 import styled from 'styled-components';
 
-import { H2, ItemsWrapper } from './shared';
+import { H2, ItemsWrapper, FlexContainer } from './shared';
 
 import './layout.css';
 
@@ -17,10 +17,6 @@ const HowWeWorkItemWrapper = styled.div`
   @media only screen and (max-width: 600px) {
     margin-top: 0px;
   }
-`;
-
-const FlexContainer = styled.div`
-  display: flex;
 `;
 
 const HowWeWorkItemHeading = styled.h3`
@@ -90,6 +86,7 @@ const WeCanHelpYouMessage = styled.span`
   color: #000000;
   font-size: 36px;
   background: linear-gradient(to bottom, transparent 15px, #e8c81d 15px, #e8c81d 36px, transparent 36px);
+  cursor: pointer;
 
   @media only screen and (max-width: 780px) {
     background: repeating-linear-gradient(to bottom, transparent 0% 50%, #e8c81d 50% 100%);
@@ -97,6 +94,20 @@ const WeCanHelpYouMessage = styled.span`
 
   @media only screen and (max-width: 600px) {
     font-size: 24px;
+  }
+`;
+
+const DesktopWrapper = styled.div`
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+`;
+
+const MobileWrapper = styled.div`
+  display: none;
+
+  @media only screen and (max-width: 600px) {
+    display: block;
   }
 `;
 
@@ -170,13 +181,11 @@ const useStyles = makeStyles((theme) =>
 
 const HowWeWork = () => {
   const classes = useStyles();
-  const [isDesktop, setIsDesktop] = React.useState(false);
 
-  React.useLayoutEffect(() => {
-    if (window.innerWidth > 600) {
-      setIsDesktop(true);
-    }
-  }, [setIsDesktop]);
+  const onButtonClick = () =>
+    document.getElementById('contactForm').scrollIntoView({
+      behavior: 'smooth',
+    });
 
   const getTitle = (item) => (
     <HowWeWorkItemWrapper order={item.order}>
@@ -189,9 +198,9 @@ const HowWeWork = () => {
     </HowWeWorkItemWrapper>
   );
 
-  const getDescription = (item) => (
+  const getDescription = (item, desktopView) => (
     <>
-      {isDesktop && <DescriptionWrapper>{item.description}</DescriptionWrapper>}
+      {desktopView && <DescriptionWrapper>{item.description}</DescriptionWrapper>}
       <DetailsList>
         {item.details.map((detail, index) => (
           <ListItem key={index}>{detail}</ListItem>
@@ -204,35 +213,40 @@ const HowWeWork = () => {
     <>
       <H2>jak pracujeme</H2>
       <ItemsWrapper>
-        {howWeWorkData.map((item) =>
-          isDesktop ? (
-            <div>
+        {howWeWorkData.map((item) => (
+          <>
+            <DesktopWrapper>
               {getTitle(item)}
-              {getDescription(item)}
-            </div>
-          ) : (
-            <Accordion
-              key={item.order}
-              classes={{
-                root: classes.rootWithoutBorders,
-              }}>
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
+              {getDescription(item, true)}
+            </DesktopWrapper>
+            <MobileWrapper>
+              <Accordion
+                key={item.order}
                 classes={{
-                  root: classes.summaryRoot,
+                  root: classes.rootWithoutBorders,
                 }}>
-                <div>
-                  {getTitle(item)}
-                  <DescriptionWrapper>{item.description}</DescriptionWrapper>
-                </div>
-              </AccordionSummary>
-              <AccordionDetails style={{ paddingLeft: 0, display: 'block' }}>{getDescription(item)}</AccordionDetails>
-            </Accordion>
-          ),
-        )}
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  classes={{
+                    root: classes.summaryRoot,
+                  }}>
+                  <div>
+                    {getTitle(item)}
+                    <DescriptionWrapper>{item.description}</DescriptionWrapper>
+                  </div>
+                </AccordionSummary>
+                <AccordionDetails style={{ paddingLeft: 0, display: 'block' }}>
+                  {getDescription(item, false)}
+                </AccordionDetails>
+              </Accordion>
+            </MobileWrapper>
+          </>
+        ))}
       </ItemsWrapper>
       <WeCanHelpYouMessageWrapper>
-        <WeCanHelpYouMessage>dokážeme vám pomoci v jakékoliv fázi vašeho projektu</WeCanHelpYouMessage>
+        <WeCanHelpYouMessage onClick={onButtonClick}>
+          dokážeme vám pomoci v jakékoliv fázi vašeho projektu
+        </WeCanHelpYouMessage>
       </WeCanHelpYouMessageWrapper>
     </>
   );

@@ -1,12 +1,21 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
-import { H2 } from '../shared';
+import { FlexContainer, H2 } from '../shared';
 import { ContactFormWrapper, TextAreaWrapper, SendButtonWrapper, GdprInfoWrapper } from './styled';
 
 import './styles.css';
+
+const SuccessMessage = styled.p`
+  font-size: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  color: #28a745;
+`;
 
 const CZECH_PHONE_NUMBER_REGEX = /([+]?\d{1,3}[. \s]?)?(\d{9}?)/g;
 
@@ -25,12 +34,9 @@ const ContactForm = () => {
   const onSubmit = async () => {
     setSubmitClicked(true);
 
-    if (
-      contactFormData.name &&
-      contactFormData.email
-    ) {
+    if (contactFormData.name && contactFormData.email) {
       try {
-        await axios.post('http://ayurtest.eu/mail.php', contactFormData);
+        await axios.post('https://codeers.cz/mail.php', contactFormData);
         setIsEmailSent(true);
       } catch (error) {
         console.error(error);
@@ -39,7 +45,14 @@ const ContactForm = () => {
   };
 
   if (isEmailSent) {
-    // TODO successfully sent
+    return (
+      <FlexContainer style={{ marginTop: '160px' }} centered={true}>
+        <CheckCircleIcon style={{ alignSelf: 'center', color: '#28a745' }} color="success" />
+        <SuccessMessage>
+          Vaše zpráva byla odeslána týmu Codeers. V brzké době Vás budeme kontaktovat. Děkujeme.
+        </SuccessMessage>
+      </FlexContainer>
+    );
   }
 
   const isPhoneInvalid = !contactFormData.phone?.match(CZECH_PHONE_NUMBER_REGEX);

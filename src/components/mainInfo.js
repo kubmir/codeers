@@ -6,12 +6,16 @@ import './layout.css';
 const MainHeading = styled.h1`
   font-size: 64px;
   font-weight: 700;
-  margin-top: 280px;
+  margin-top: 30vh;
   line-height: 86px;
 
   @media only screen and (max-width: 600px) {
     font-size: 32px;
     line-height: 42px;
+  }
+
+  @media only screen and (max-width: 330px) {
+    margin-top: 32px;
   }
 `;
 
@@ -46,6 +50,11 @@ const CooperationWrapper = styled.div`
   display: flex;
 `;
 
+const Wrapper = styled.div`
+  position: absolute;
+  bottom: 0;
+`;
+
 const MainInfo = () => {
   const onButtonClick = () =>
     document.getElementById('contactForm').scrollIntoView({
@@ -53,7 +62,7 @@ const MainInfo = () => {
     });
 
   return (
-    <>
+    <Wrapper>
       <MainHeading>
         mobilní aplikace
         <br />
@@ -66,7 +75,7 @@ const MainInfo = () => {
       <CooperationWrapper>
         <StartCooperation onClick={onButtonClick}>chci spolupracovat</StartCooperation>
       </CooperationWrapper>
-    </>
+    </Wrapper>
   );
 };
 

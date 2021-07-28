@@ -6,7 +6,7 @@
     $post = json_decode(file_get_contents('php://input'), true);
 
     if (!empty($post)) {
-        $sender = "postmaster@ayurtest.eu";
+        $sender = "postmaster@codeers.cz";
 
         $name = $post["name"];
         $email = $post["email"];
@@ -14,7 +14,7 @@
         $number = $post["number"];
         $company = $post["company"];
 
-        $to = "kubus.miro@gmail.com";
+        $to = "info@codeers.cz";
         $subject = "Codeers - nový dotaz od zákazníka";
 
         if(empty($name) || empty($email)) {
