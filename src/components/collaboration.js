@@ -8,24 +8,24 @@ import './layout.css';
 
 const collaborationSteps = [
   {
-    title: 'naplánujeme schůzku',
+    title: 'úvodní schůzka',
     description:
       'Nezávazně nás kontaktujte a sdělte nám svoji představu. Pokud ji nemáte ucelenou, namísto dlouhých debat uspořádáme produktový workshop a jednotlivé nápady vyzkoušíme rovnou v praxi.',
   },
   {
     title: 'analýza',
     description:
-      'Smluvené požadavky rozpracujeme v analýze, abychom představy dali transparentně na papír a sjednotili se.',
+      'Smluvené požadavky rozpracujeme v analýze, abychom sladili vaše představy a naše řešení.',
   },
   {
     title: 'realizace',
     description:
-      'Začneme s iterativním vývojem, v průběhu kterého s vámi budeme pravidelně v kontaktu a ověříme si, že se věci vyvíjí správným směrem.',
+      'Začneme s iterativním vývojem, v průběhu kterého s vámi budeme pravidelně v kontaktu. Budete tak mít po celou dobu projekt pod kontrolou.',
   },
   {
     title: 'odevzdání',
     description:
-      'Hotový produkt vydáme buď do obchodu nebo interně v rámci Vaší firmy a domluvíme se na dalších možnostech spolupráce, které by produkt ještě vylepšily, či napomohly k jeho růstu a optimalizaci.',
+      'Hotový produkt vydáme buď do obchodu, nebo interně v rámci firmy. Na úspěšnou spolupráci můžeme navázat dalšími postupy, které by produkt ještě vylepšily, či napomohly k jeho růstu a optimalizaci.',
   },
 ];
 

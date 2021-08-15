@@ -115,18 +115,24 @@ const howWeWorkData = [
   {
     order: '01',
     title: 'produktová strategie',
-    description: 'Společně definujeme, jak dokážeme vaši vizi zhmotnit pomocí aplikace.',
-    details: ['zmapování potřeb', 'průzkum trhu', 'analýza možností', 'definice produktu', 'stanovení budgetu'],
+    description: 'Společně definujeme, jak vaši vizi zhmotnit pomocí aplikace.',
+    details: [
+      'zmapování potřeb', 
+      'průzkum trhu', 
+      'analýza možností', 
+      'definice produktu', 
+      'stanovení budgetu'
+    ],
   },
   {
     order: '02',
     title: 'produktový design',
     description:
-      'Posuneme od strategie k reálnému zadání, abychom si vše vyjasnili než se pustíme do samotného vývoje.',
+      'Posuneme se od strategie k reálnému zadání, protože co je psáno, to je dáno.',
     details: [
       'vypracování detailního zadání a funkčnosti MVP',
       'discovery fáze',
-      'prototypování v případě více možných návrhů',
+      'tvorba prototypů',
       'návrh aplikace zaměřený na uživatele',
       'grafický návrh v podobě wireframů',
       'roadmapa první fáze vývoje',
@@ -136,10 +142,10 @@ const howWeWorkData = [
   {
     order: '03',
     title: 'vývoj aplikace',
-    description: 'Zadání máme vyjasněno. Začínáme se samotným vývojem aplikace.',
+    description: 'Zadání máme vyjasněno a začínáme se samotným vývojem aplikace.',
     details: [
       'iterativní vývoj',
-      'spolupráce založená na základech agilních principů',
+      'spolupráce vycházející z agilních principů',
       'CI/CD umožňující sledování vývoje',
       'příprava API',
       'nativní vývoj pro iOS & Android',
@@ -154,10 +160,10 @@ const howWeWorkData = [
     title: 'růst a optimalizace',
     description: 'Máme hotovo, ale vždycky je co zlepšovat.',
     details: [
-      'analýza nefunkčních částí aplikace',
-      'další doporučení a návrhy na rozšíření o nové funkcionality',
-      'aplikace nových technologií',
+      'doporučení a návrhy na rozšíření o nové funkcionality',
+      'analýza neoptimálních částí aplikace',
       'škálování',
+      'implementace nových technologií',
       'trackování a analýza dat uživatelů',
       'vyhodnocení nasbíraných dat na základě analytiky a metrik',
     ],
