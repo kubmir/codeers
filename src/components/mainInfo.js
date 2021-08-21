@@ -39,7 +39,7 @@ const StartCooperation = styled.p`
   margin-top: 24px;
   margin-bottom: 0px;
   cursor: pointer;
-  
+
   @media only screen and (max-width: 600px) {
     font-size: 24px;
     margin-top: 16px;
@@ -50,10 +50,7 @@ const CooperationWrapper = styled.div`
   display: flex;
 `;
 
-const Wrapper = styled.div`
-  position: absolute;
-  bottom: 0;
-`;
+const Wrapper = styled.div``;
 
 const MainInfo = () => {
   const onButtonClick = () =>
