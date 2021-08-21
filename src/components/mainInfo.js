@@ -69,7 +69,7 @@ const MainInfo = () => {
         velké věci na malém prostoru
       </MainHeading>
       <MainDescription>
-        Jsme vývojářská a poradenská firma. Specializujeme se na integraci nativních mobilních aplikací do všech oblastí podnikání.
+        Jsme vývojářská a poradenská firma. Specializujeme se na integraci mobilních aplikací do všech oblastí podnikání.
       </MainDescription>
       <CooperationWrapper>
         <StartCooperation onClick={onButtonClick}>chci spolupracovat</StartCooperation>
