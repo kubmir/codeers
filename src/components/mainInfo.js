@@ -1,13 +1,18 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import titleImage from '../svg/new/top.png';
 
 import './layout.css';
 
 const MainHeading = styled.h1`
+  position: absolute;
+  bottom: 50px;
+  color: white;
   font-size: 64px;
-  font-weight: 700;
-  margin-top: 30vh;
+  font-weight: 400;
   line-height: 86px;
+  text-transform: uppercase;
+  margin-left: 10%;
 
   @media only screen and (max-width: 600px) {
     font-size: 32px;
@@ -19,60 +24,36 @@ const MainHeading = styled.h1`
   }
 `;
 
-const MainDescription = styled.p`
-  margin-top: 40px;
-  font-size: 34px;
-  line-height: 46px;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 24px;
-    line-height: 32px;
-  }
-`;
-
-const StartCooperation = styled.p`
-  color: #000000;
-  font-size: 36px;
-  background-image: linear-gradient(to bottom, transparent 15px, #e8c81d 15px, #e8c81d 36px, transparent 36px);
-  text-align: center;
-  font-weight: 700;
-  margin-top: 24px;
-  margin-bottom: 0px;
-  cursor: pointer;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 24px;
-    margin-top: 16px;
-  }
-`;
-
-const CooperationWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  width: 100vw;
+  height: calc(100vh - 120px);
+  background: linear-gradient(180.06deg, #8d8d8b 22.87%, #646469 99.95%);
 `;
 
-const Wrapper = styled.div``;
+const SmallHeading = styled.span`
+  font-size: 32px;
+`;
 
-const MainInfo = () => {
-  const onButtonClick = () =>
-    document.getElementById('contactForm').scrollIntoView({
-      behavior: 'smooth',
-    });
+const TitleImage = styled.img``;
 
-  return (
-    <Wrapper>
+const HeadingWrapper = styled.div`
+  flex-grow: 1;
+`;
+
+const MainInfo = () => (
+  <Wrapper>
+    <HeadingWrapper>
       <MainHeading>
         mobilní aplikace
         <br />
-        velké věci na malém prostoru
+        velké věci
+        <br />
+        <SmallHeading>na malém prostoru</SmallHeading>
       </MainHeading>
-      <MainDescription>
-        Jsme vývojářská a poradenská firma. Specializujeme se na integraci mobilních aplikací do všech oblastí podnikání.
-      </MainDescription>
-      <CooperationWrapper>
-        <StartCooperation onClick={onButtonClick}>chci spolupracovat</StartCooperation>
-      </CooperationWrapper>
-    </Wrapper>
-  );
-};
+    </HeadingWrapper>
+    <TitleImage src={titleImage} />
+  </Wrapper>
+);
 
 export default MainInfo;

@@ -12,14 +12,9 @@ const FooterWrapper = styled.div`
 `;
 
 const CopyrightMessage = styled.p`
-  color: #000000;
+  color: #1c1b17;
   font-size: 16px;
-  background-image: linear-gradient(to bottom, transparent 10px, #e8c81d 10px, #e8c81d 20px, transparent 20px);
-  bottom: 48px;
-
-  @media only screen and (max-width: 600px) {
-    bottom: 16px;
-  }
+  font-weight: 700;
 `;
 
 const Footer = () => {

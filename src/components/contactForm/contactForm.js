@@ -1,21 +1,20 @@
 import * as React from 'react';
-import styled from 'styled-components';
 
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import { FlexContainer, H2 } from '../shared';
-import { ContactFormWrapper, TextAreaWrapper, SendButtonWrapper, GdprInfoWrapper } from './styled';
+import {
+  ContactFormWrapper,
+  TextAreaWrapper,
+  SendButtonWrapper,
+  GdprInfoWrapper,
+  ContactWrapper,
+  SuccessMessage,
+} from './styled';
 
 import './styles.css';
-
-const SuccessMessage = styled.p`
-  font-size: 24px;
-  font-weight: 400;
-  padding-left: 16px;
-  color: #28a745;
-`;
 
 const CZECH_PHONE_NUMBER_REGEX = /([+]?\d{1,3}[. \s]?)?(\d{9}?)/g;
 
@@ -58,8 +57,8 @@ const ContactForm = () => {
   const isPhoneInvalid = !contactFormData.phone?.match(CZECH_PHONE_NUMBER_REGEX);
 
   return (
-    <div id="contactForm">
-      <H2>kontaktujte nás</H2>
+    <ContactWrapper id="contactForm">
+      <H2 style={{ marginTop: 0 }}>kontaktujte nás</H2>
       <ContactFormWrapper>
         <TextField
           id="name"
@@ -112,7 +111,7 @@ const ContactForm = () => {
       </TextAreaWrapper>
       <GdprInfoWrapper>Odesláním souhlasíte se zpracováním osobních údajů</GdprInfoWrapper>
       <SendButtonWrapper onClick={onSubmit}>odeslat</SendButtonWrapper>
-    </div>
+    </ContactWrapper>
   );
 };
 

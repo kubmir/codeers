@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 import logo from '../svg/codeers-logo.svg';
+import { LanguageSwitcher } from './languageSwitcher';
+
 import './layout.css';
 
 import '@fontsource/red-hat-display';
@@ -29,16 +31,48 @@ const Logo = styled.img`
   }
 `;
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+  background-color: white;
+  padding: 0 3.5rem;
+
+  @media only screen and (max-width: 600px) {
+    padding: 0 1.5rem;
+  }
+`;
+
+const ContactLink = styled.a`
+  text-decoration: underline;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: #000000;
+  font-size: 16px;
+
+  @media only screen and (max-width: 600px) {
+    display: none;
+  }
+`;
+
 const Layout = ({ children }) => {
   return (
-    <body>
-      <a href="https://codeers.cz" title="Codeers">
-        <LogoWrapper>
-          <Logo src={logo} />
-        </LogoWrapper>
-      </a>
+    <>
+      <HeaderWrapper>
+        <a href="https://codeers.cz" title="Codeers">
+          <LogoWrapper>
+            <Logo src={logo} />
+          </LogoWrapper>
+        </a>
+        <ContactLink href="#contactForm">Kontakt</ContactLink>
+        <LanguageSwitcher />
+      </HeaderWrapper>
+
       <main>{children}</main>
-    </body>
+    </>
   );
 };
 

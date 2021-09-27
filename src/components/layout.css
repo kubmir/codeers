@@ -3,6 +3,7 @@ html {
   -webkit-text-size-adjust: 100%;
   font: 112.5%/1.45em 'Red Hat Text';
   box-sizing: border-box;
+  scroll-behavior: smooth;
   overflow-y: scroll;
 }
 
@@ -14,9 +15,7 @@ body {
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
-  padding: 0 24px;
-  max-width: 1380px;
-  margin: 0 auto;
+  margin: 0;
 }
 
 button {
@@ -98,10 +97,6 @@ h4 {
 }
 
 @media (max-width: 600px) {
-  body {
-    padding: 0 8px;
-  }
-
   h1 {
     margin-bottom: 1rem;
     font-size: 1.75rem;

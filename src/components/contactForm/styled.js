@@ -34,6 +34,8 @@ export const TextAreaWrapper = styled.div`
 
 export const SendButtonWrapper = styled.button`
   width: 235px;
+  font-weight: 400;
+  text-transform: uppercase;
 `;
 
 export const GdprInfoWrapper = styled.p`
@@ -44,4 +46,15 @@ export const GdprInfoWrapper = styled.p`
     margin: 30px 0;
     font-size: 16px;
   }
+`;
+
+export const SuccessMessage = styled.p`
+  font-size: 24px;
+  font-weight: 400;
+  padding-left: 16px;
+  color: #28a745;
+`;
+
+export const ContactWrapper = styled.div`
+  padding-top: 130px;
 `;
