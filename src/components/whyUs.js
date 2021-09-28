@@ -3,16 +3,15 @@ import styled from 'styled-components';
 
 import whyUsImage from '../svg/new/why.png';
 
-import { H2, SectionWithSpaceAround } from './shared';
+import { H2 } from './shared';
 import './layout.css';
 
 const ReasonImage = styled.img`
-  height: calc(100vh - 120px);
-  width: 40%;
-
-  @media only screen and (max-width: 600px) {
-    display: none;
-  }
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: -1;
 `;
 
 const ReasonTitle = styled.p`
@@ -37,25 +36,25 @@ const ReasonDescription = styled.p`
 `;
 
 const WhyUsWrapper = styled.div`
-  display: flex;
+  position: relative;
   margin: 8rem 0;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     &:before {
       content: ' ';
       display: block;
       position: absolute;
       left: 0;
-      top: 0;
+      top: ${props => props.mobileTopPosition}px;
       width: 100%;
-      height: calc(100vh - 120px);
+      height: calc(100vh - 100px);
       opacity: 0.1;
       background-image: url(${whyUsImage});
       background-repeat: no-repeat;
-      background-position: 50% 0;
       background-size: cover;
       z-index: -10;
     }
+    padding: 2rem 0;
     margin: 3rem 0;
   }
 `;
@@ -67,20 +66,32 @@ const MainReasonInfo = styled.p`
   line-height: 2.5rem;
 `;
 
-const ReasonsContainer = styled.div`
-  height: 40vh;
-  overflow-y: scroll;
+const MobileWrapper = styled.div`
+  overflow: scroll;
 
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+  @media only screen and (max-width: 768px) {
+    position: relative;
+  }
+`;
 
-  ::-webkit-scrollbar {
+const ImageWrapper = styled.div`
+  position: absolute;
+  right: 0;
+  height: calc(100vh - 120px);
+
+  @media only screen and (max-width: 768px) {
     display: none;
   }
 `;
 
-const MobileWrapper = styled.div`
-  position: relative;
+const ReasonsWrapper = styled.div`
+  width: 60%;
+  padding: 0 3rem 4rem 3rem;
+
+  @media only screen and (max-width: 768px) {
+    width: calc(100% - 2rem);
+    padding: 0 1rem;
+  }
 `;
 
 const whyUsData = [
@@ -102,22 +113,54 @@ const whyUsData = [
 ];
 
 const WhyUs = () => {
+  const [topPositionOfImage, setTopPositionOfImage] = React.useState(0);
+  const [topPositionOfImageMobile, setTopPositionOfImageMobile] = React.useState(0);
+
+  React.useLayoutEffect(() => {
+    const calculateImageTopPosition = () => {
+      const mobileScreenHeight = window.innerHeight - 100;
+
+      const whyUsWrapperElement = document.getElementById('whyUsWrapper');
+      const imageWrapper = document.getElementById('imageWrapper');
+
+      const whyUsWrapperHeight = whyUsWrapperElement.clientHeight;
+      const imageWrapperHeight = imageWrapper.clientHeight;
+
+      const maxTopShift = whyUsWrapperHeight > imageWrapperHeight ? whyUsWrapperHeight - imageWrapperHeight : 0;
+      const currentShift = (whyUsWrapperElement.getBoundingClientRect().top * -1) + 120;
+      const newTopPosition = currentShift > maxTopShift ? maxTopShift : currentShift;
+
+      const maxTopMobileShift = whyUsWrapperHeight > mobileScreenHeight ? whyUsWrapperHeight - mobileScreenHeight : 0;
+      const currentMobileShift = whyUsWrapperElement.getBoundingClientRect().top * -1 + 100;
+      const newTopMobilePosition = currentMobileShift > maxTopMobileShift ? maxTopMobileShift : currentMobileShift;
+
+      setTopPositionOfImage(newTopPosition < 0 ? 0 : newTopPosition);
+      setTopPositionOfImageMobile(newTopMobilePosition < 0 ? 0 : newTopMobilePosition);
+    };
+
+    document.addEventListener('scroll', calculateImageTopPosition);
+
+    return () => {
+      document.removeEventListener('scroll', calculateImageTopPosition);
+    }
+  }, []);
+
   return (
     <MobileWrapper>
-      <WhyUsWrapper>
-        <SectionWithSpaceAround>
+      <WhyUsWrapper id="whyUsWrapper" mobileTopPosition={topPositionOfImageMobile}>
+        <ReasonsWrapper>
           <H2 style={{ marginTop: '2rem' }}>proč zvolit codeers</H2>
           <MainReasonInfo>Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.</MainReasonInfo>
-          <ReasonsContainer>
-            {whyUsData.map((step) => (
-              <>
-                <ReasonTitle>{step.title}</ReasonTitle>
-                <ReasonDescription>{step.description}</ReasonDescription>
-              </>
-            ))}
-          </ReasonsContainer>
-        </SectionWithSpaceAround>
-        <ReasonImage src={whyUsImage} />
+          {whyUsData.map((step) => (
+            <div key={step.title}>
+              <ReasonTitle>{step.title}</ReasonTitle>
+              <ReasonDescription>{step.description}</ReasonDescription>
+            </div>
+          ))}
+        </ReasonsWrapper>
+        <ImageWrapper id="imageWrapper" style={{ top: topPositionOfImage}}>
+          <ReasonImage src={whyUsImage} />
+        </ImageWrapper>
       </WhyUsWrapper>
     </MobileWrapper>
   );
