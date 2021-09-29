@@ -10,6 +10,7 @@ import References from '../components/references';
 import { Technologies } from '../components/technologies';
 import { SectionWithSpaceAround } from '../components/shared';
 import { Team } from '../components/team';
+import HowWeWork from '../components/howWeWork';
 
 const IndexPage = () => (
   <Layout>
@@ -20,6 +21,7 @@ const IndexPage = () => (
     <SectionWithSpaceAround>
       <Technologies />
     </SectionWithSpaceAround>
+    <HowWeWork />
     <SectionWithSpaceAround>
       <Team />
       <ContactForm />
