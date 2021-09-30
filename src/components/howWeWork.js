@@ -14,14 +14,30 @@ const HowWeWorkImage = styled.img`
   z-index: -1;
 `;
 
-const StepTitle = styled.p`
-  font-size: 1.5rem;
+const StepTitle = styled.h3`
   margin-top: 2rem;
-  line-height: 46px;
+  line-height: 2.5rem;
   font-weight: 700;
 
+  &:before {
+    content: '';
+    position: absolute;
+    top: 3.25rem;
+    left: calc(-2.5rem - 5px);
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: ${(props) => (props.isActive ? '4px solid #E8C81D' : '4px solid #C4C4C4')};;
+    border-radius: 50%;
+    background: #fff;
+
+    @media only screen and (max-width: 600px) {
+      top: 2.5rem;
+    }
+  }
+
   @media only screen and (max-width: 600px) {
-    font-size: 0.75rem;
     margin-top: 1.5rem;
     line-height: 32px;
   }
@@ -86,7 +102,25 @@ const StepsWrapper = styled.div`
   }
 `;
 
-const StepWrapper = styled.div``;
+const Line = styled.div`
+  margin-top: 3.25rem;
+  width: 4px;
+  background: ${(props) => (props.isActive ? '#E8C81D' : '#C4C4C4')};
+
+  @media only screen and (max-width: 768px) {
+    margin-top: 2.5rem;
+  }
+`;
+
+const StepWrapper = styled.div`
+  display: flex;
+`;
+
+const StepInfoWrapper = styled.div`
+  margin-left: 2rem;
+  width: 70%;
+  position: relative;
+`;
 
 const stepsData = [
   {
@@ -136,8 +170,11 @@ const HowWeWork = () => (
         <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
         {stepsData.map((step) => (
           <StepWrapper key={step.title}>
-            <StepTitle>{step.title}</StepTitle>
-            <StepDescription>{step.description}</StepDescription>
+            <Line />
+            <StepInfoWrapper>
+              <StepTitle>{step.title}</StepTitle>
+              <StepDescription>{step.description}</StepDescription>
+            </StepInfoWrapper>
           </StepWrapper>
         ))}
       </StepsWrapper>
