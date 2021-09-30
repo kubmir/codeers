@@ -7,10 +7,10 @@ import { H2 } from './shared';
 import './layout.css';
 
 const ReasonImage = styled.img`
-  position: absolute;
-  top: 0;
+  position: sticky;
+  top: 120px;
   right: 0;
-  height: 100%;
+  height: calc(100vh - 120px);
   z-index: -1;
 `;
 
@@ -36,7 +36,7 @@ const ReasonDescription = styled.p`
 `;
 
 const WhyUsWrapper = styled.div`
-  position: relative;
+  display: flex;
   margin: 8rem 0;
 
   @media only screen and (max-width: 768px) {
@@ -45,7 +45,7 @@ const WhyUsWrapper = styled.div`
       display: block;
       position: absolute;
       left: 0;
-      top: ${props => props.mobileTopPosition}px;
+      top: ${(props) => props.mobileTopPosition}px;
       width: 100%;
       height: calc(100vh - 100px);
       opacity: 0.1;
@@ -67,17 +67,13 @@ const MainReasonInfo = styled.p`
 `;
 
 const MobileWrapper = styled.div`
-  overflow: scroll;
-
   @media only screen and (max-width: 768px) {
     position: relative;
   }
 `;
 
 const ImageWrapper = styled.div`
-  position: absolute;
-  right: 0;
-  height: calc(100vh - 120px);
+  width: 40%;
 
   @media only screen and (max-width: 768px) {
     display: none;
@@ -113,7 +109,6 @@ const whyUsData = [
 ];
 
 const WhyUs = () => {
-  const [topPositionOfImage, setTopPositionOfImage] = React.useState(0);
   const [topPositionOfImageMobile, setTopPositionOfImageMobile] = React.useState(0);
 
   React.useLayoutEffect(() => {
@@ -121,20 +116,13 @@ const WhyUs = () => {
       const mobileScreenHeight = window.innerHeight - 100;
 
       const whyUsWrapperElement = document.getElementById('whyUsWrapper');
-      const imageWrapper = document.getElementById('imageWrapper');
 
       const whyUsWrapperHeight = whyUsWrapperElement.clientHeight;
-      const imageWrapperHeight = imageWrapper.clientHeight;
-
-      const maxTopShift = whyUsWrapperHeight > imageWrapperHeight ? whyUsWrapperHeight - imageWrapperHeight : 0;
-      const currentShift = (whyUsWrapperElement.getBoundingClientRect().top * -1) + 120;
-      const newTopPosition = currentShift > maxTopShift ? maxTopShift : currentShift;
 
       const maxTopMobileShift = whyUsWrapperHeight > mobileScreenHeight ? whyUsWrapperHeight - mobileScreenHeight : 0;
       const currentMobileShift = whyUsWrapperElement.getBoundingClientRect().top * -1 + 100;
       const newTopMobilePosition = currentMobileShift > maxTopMobileShift ? maxTopMobileShift : currentMobileShift;
 
-      setTopPositionOfImage(newTopPosition < 0 ? 0 : newTopPosition);
       setTopPositionOfImageMobile(newTopMobilePosition < 0 ? 0 : newTopMobilePosition);
     };
 
@@ -142,25 +130,25 @@ const WhyUs = () => {
 
     return () => {
       document.removeEventListener('scroll', calculateImageTopPosition);
-    }
+    };
   }, []);
 
   return (
     <MobileWrapper>
       <WhyUsWrapper id="whyUsWrapper" mobileTopPosition={topPositionOfImageMobile}>
-        <ReasonsWrapper>
-          <H2 style={{ marginTop: '2rem' }}>proč zvolit codeers</H2>
-          <MainReasonInfo>Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.</MainReasonInfo>
-          {whyUsData.map((step) => (
-            <div key={step.title}>
-              <ReasonTitle>{step.title}</ReasonTitle>
-              <ReasonDescription>{step.description}</ReasonDescription>
-            </div>
-          ))}
-        </ReasonsWrapper>
-        <ImageWrapper id="imageWrapper" style={{ top: topPositionOfImage}}>
-          <ReasonImage src={whyUsImage} />
-        </ImageWrapper>
+          <ReasonsWrapper>
+            <H2 style={{ marginTop: '2rem' }}>proč zvolit codeers</H2>
+            <MainReasonInfo>Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.</MainReasonInfo>
+            {whyUsData.map((step) => (
+              <div key={step.title}>
+                <ReasonTitle>{step.title}</ReasonTitle>
+                <ReasonDescription>{step.description}</ReasonDescription>
+              </div>
+            ))}
+          </ReasonsWrapper>
+          <ImageWrapper>
+            <ReasonImage src={whyUsImage} />
+          </ImageWrapper>
       </WhyUsWrapper>
     </MobileWrapper>
   );

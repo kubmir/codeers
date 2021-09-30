@@ -11,6 +11,7 @@ import './layout.css';
 
 const ReferenceImage = styled.img`
   width: 60%;
+  max-height: 32rem;
 
   @media only screen and (max-width: 600px) {
     width: 100%;

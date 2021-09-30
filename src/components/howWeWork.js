@@ -7,10 +7,10 @@ import { H2 } from './shared';
 import './layout.css';
 
 const HowWeWorkImage = styled.img`
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
+  position: sticky;
+  top: 120px;
+  right: 0;
+  height: calc(100vh - 120px);
   z-index: -1;
 `;
 
@@ -36,7 +36,7 @@ const StepDescription = styled.p`
 `;
 
 const HowWeWorkWrapper = styled.div`
-  position: relative;
+  display: flex;
   margin: 8rem 0;
 
   @media only screen and (max-width: 768px) {
@@ -45,7 +45,7 @@ const HowWeWorkWrapper = styled.div`
       display: block;
       position: absolute;
       left: 0;
-      top: ${props => props.mobileTopPosition}px;
+      top: ${(props) => props.mobileTopPosition}px;
       width: 100%;
       height: calc(100vh - 100px);
       opacity: 0.1;
@@ -60,17 +60,13 @@ const HowWeWorkWrapper = styled.div`
 `;
 
 const MobileWrapper = styled.div`
-  overflow: scroll;
-
   @media only screen and (max-width: 768px) {
     position: relative;
   }
 `;
 
 const ImageWrapper = styled.div`
-  position: absolute;
-  left: 0;
-  height: calc(100vh - 120px);
+  width: 40%;
 
   @media only screen and (max-width: 768px) {
     display: none;
@@ -78,11 +74,9 @@ const ImageWrapper = styled.div`
 `;
 
 const StepsWrapper = styled.div`
-  margin-left: 40%;
   padding: 0 3rem 4rem 3rem;
 
   @media only screen and (max-width: 768px) {
-    margin-left: 0;
     width: calc(100% - 2rem);
     padding: 0 1rem;
   }
@@ -129,7 +123,6 @@ const stepsData = [
 ];
 
 const HowWeWork = () => {
-  const [topPositionOfImage, setTopPositionOfImage] = React.useState(0);
   const [topPositionOfImageMobile, setTopPositionOfImageMobile] = React.useState(0);
 
   React.useLayoutEffect(() => {
@@ -137,20 +130,14 @@ const HowWeWork = () => {
       const mobileScreenHeight = window.innerHeight - 100;
 
       const howWeWorkElement = document.getElementById('howWeWorkWrapper');
-      const imageWrapper = document.getElementById('imageWrapper');
 
       const howWeWorkWrapperHeight = howWeWorkElement.clientHeight;
-      const imageWrapperHeight = imageWrapper.clientHeight;
 
-      const maxTopShift = howWeWorkWrapperHeight > imageWrapperHeight ? howWeWorkWrapperHeight - imageWrapperHeight : 0;
-      const currentShift = howWeWorkElement.getBoundingClientRect().top * -1 + 120;
-      const newTopPosition = currentShift > maxTopShift ? maxTopShift : currentShift;
-
-      const maxTopMobileShift = howWeWorkWrapperHeight > mobileScreenHeight ? howWeWorkWrapperHeight - mobileScreenHeight : 0;
+      const maxTopMobileShift =
+        howWeWorkWrapperHeight > mobileScreenHeight ? howWeWorkWrapperHeight - mobileScreenHeight : 0;
       const currentMobileShift = howWeWorkElement.getBoundingClientRect().top * -1 + 100;
       const newTopMobilePosition = currentMobileShift > maxTopMobileShift ? maxTopMobileShift : currentMobileShift;
 
-      setTopPositionOfImage(newTopPosition < 0 ? 0 : newTopPosition);
       setTopPositionOfImageMobile(newTopMobilePosition < 0 ? 0 : newTopMobilePosition);
     };
 
@@ -164,7 +151,7 @@ const HowWeWork = () => {
   return (
     <MobileWrapper>
       <HowWeWorkWrapper id="howWeWorkWrapper" mobileTopPosition={topPositionOfImageMobile}>
-        <ImageWrapper id="imageWrapper" style={{ top: topPositionOfImage }}>
+        <ImageWrapper>
           <HowWeWorkImage src={howWeWorkImage} />
         </ImageWrapper>
         <StepsWrapper>
