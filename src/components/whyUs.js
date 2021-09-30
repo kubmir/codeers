@@ -40,12 +40,16 @@ const WhyUsWrapper = styled.div`
   margin: 8rem 0;
 
   @media only screen and (max-width: 768px) {
+    display: block;
+    padding: 2rem 0;
+    margin: 3rem 0;
+
     &:before {
       content: ' ';
       display: block;
-      position: absolute;
+      position: sticky;
       left: 0;
-      top: ${(props) => props.mobileTopPosition}px;
+      top: 100px;
       width: 100%;
       height: calc(100vh - 100px);
       opacity: 0.1;
@@ -54,8 +58,6 @@ const WhyUsWrapper = styled.div`
       background-size: cover;
       z-index: -10;
     }
-    padding: 2rem 0;
-    margin: 3rem 0;
   }
 `;
 
@@ -85,6 +87,7 @@ const ReasonsWrapper = styled.div`
   padding: 0 3rem 4rem 3rem;
 
   @media only screen and (max-width: 768px) {
+    position: relative;
     width: calc(100% - 2rem);
     padding: 0 1rem;
   }
