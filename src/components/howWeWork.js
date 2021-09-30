@@ -40,12 +40,16 @@ const HowWeWorkWrapper = styled.div`
   margin: 8rem 0;
 
   @media only screen and (max-width: 768px) {
+    display: block;
+    padding: 2rem 0;
+    margin: 3rem 0;
+
     &:before {
       content: ' ';
       display: block;
-      position: absolute;
+      position: sticky;
       left: 0;
-      top: ${(props) => props.mobileTopPosition}px;
+      top: 100px;
       width: 100%;
       height: calc(100vh - 100px);
       opacity: 0.1;
@@ -54,8 +58,6 @@ const HowWeWorkWrapper = styled.div`
       background-size: cover;
       z-index: -10;
     }
-    padding: 2rem 0;
-    margin: 3rem 0;
   }
 `;
 
@@ -77,6 +79,8 @@ const StepsWrapper = styled.div`
   padding: 0 3rem 4rem 3rem;
 
   @media only screen and (max-width: 768px) {
+    /* Ugly way to enforce right positioning of text over sticky image */
+    margin-top: calc((100vh - 100px) * (-1));
     width: calc(100% - 2rem);
     padding: 0 1rem;
   }
@@ -122,50 +126,23 @@ const stepsData = [
   },
 ];
 
-const HowWeWork = () => {
-  const [topPositionOfImageMobile, setTopPositionOfImageMobile] = React.useState(0);
-
-  React.useLayoutEffect(() => {
-    const calculateImageTopPosition = () => {
-      const mobileScreenHeight = window.innerHeight - 100;
-
-      const howWeWorkElement = document.getElementById('howWeWorkWrapper');
-
-      const howWeWorkWrapperHeight = howWeWorkElement.clientHeight;
-
-      const maxTopMobileShift =
-        howWeWorkWrapperHeight > mobileScreenHeight ? howWeWorkWrapperHeight - mobileScreenHeight : 0;
-      const currentMobileShift = howWeWorkElement.getBoundingClientRect().top * -1 + 100;
-      const newTopMobilePosition = currentMobileShift > maxTopMobileShift ? maxTopMobileShift : currentMobileShift;
-
-      setTopPositionOfImageMobile(newTopMobilePosition < 0 ? 0 : newTopMobilePosition);
-    };
-
-    document.addEventListener('scroll', calculateImageTopPosition);
-
-    return () => {
-      document.removeEventListener('scroll', calculateImageTopPosition);
-    };
-  }, []);
-
-  return (
-    <MobileWrapper>
-      <HowWeWorkWrapper id="howWeWorkWrapper" mobileTopPosition={topPositionOfImageMobile}>
-        <ImageWrapper>
-          <HowWeWorkImage src={howWeWorkImage} />
-        </ImageWrapper>
-        <StepsWrapper>
-          <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
-          {stepsData.map((step) => (
-            <StepWrapper key={step.title}>
-              <StepTitle>{step.title}</StepTitle>
-              <StepDescription>{step.description}</StepDescription>
-            </StepWrapper>
-          ))}
-        </StepsWrapper>
-      </HowWeWorkWrapper>
-    </MobileWrapper>
-  );
-};
+const HowWeWork = () => (
+  <MobileWrapper>
+    <HowWeWorkWrapper>
+      <ImageWrapper>
+        <HowWeWorkImage src={howWeWorkImage} />
+      </ImageWrapper>
+      <StepsWrapper>
+        <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
+        {stepsData.map((step) => (
+          <StepWrapper key={step.title}>
+            <StepTitle>{step.title}</StepTitle>
+            <StepDescription>{step.description}</StepDescription>
+          </StepWrapper>
+        ))}
+      </StepsWrapper>
+    </HowWeWorkWrapper>
+  </MobileWrapper>
+);
 
 export default HowWeWork;

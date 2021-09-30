@@ -26,7 +26,7 @@ const MainHeading = styled.h1`
 
 const Wrapper = styled.div`
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: calc(100vh - 120px);
   background: linear-gradient(180.06deg, #8d8d8b 22.87%, #646469 99.95%);
 `;

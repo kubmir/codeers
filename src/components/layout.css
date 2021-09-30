@@ -15,7 +15,8 @@ body {
   font-weight: normal;
   word-wrap: break-word;
   font-kerning: normal;
-  margin: 0;
+  max-width: 1380px;
+  margin: 0 auto;
 }
 
 button {

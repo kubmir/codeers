@@ -36,10 +36,15 @@ const HeaderWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   position: sticky;
+  background-color: white;
   top: 0;
   z-index: 99;
-  background-color: white;
   padding: 0 3.5rem;
+  max-width: 1380px;
+
+  @media only screen and (min-width: 1380px) {
+    padding: 0;
+  }
 
   @media only screen and (max-width: 600px) {
     padding: 0 1.5rem;
@@ -61,15 +66,15 @@ const ContactLink = styled.a`
 const Layout = ({ children }) => {
   return (
     <>
-      <HeaderWrapper>
-        <a href="https://codeers.cz" title="Codeers">
-          <LogoWrapper>
-            <Logo src={logo} />
-          </LogoWrapper>
-        </a>
-        <ContactLink href="#contactForm">Kontakt</ContactLink>
-        <LanguageSwitcher />
-      </HeaderWrapper>
+        <HeaderWrapper>
+          <a href="https://codeers.cz" title="Codeers">
+            <LogoWrapper>
+              <Logo src={logo} />
+            </LogoWrapper>
+          </a>
+          <ContactLink href="#contactForm">Kontakt</ContactLink>
+          <LanguageSwitcher />
+        </HeaderWrapper>
 
       <main>{children}</main>
     </>

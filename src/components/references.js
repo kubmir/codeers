@@ -64,12 +64,13 @@ const TextWrapper = styled.div`
 const ReferenceContainer = styled.div`
   display: flex;
   padding-top: ${(props) => (props.withTopPadding ? '2rem' : '0')};
-
   background-color: ${(props) => (props.withDesktopBackground ? '#F7F7F7' : 'transparent')};
 
   @media only screen and (max-width: 600px) {
+    padding: 0 1rem;
+    width: calc(100% - 2rem);
     flex-direction: ${(props) => (props.reverseMobileOrder ? 'column' : 'column-reverse')};
-    background-color: #F7F7F7;
+    background-color: #f7f7f7;
     padding-top: ${(props) => (props.withTopPadding ? '1rem' : '0')};
   }
 `;
@@ -80,29 +81,27 @@ const References = () => {
       <SectionWithSpaceAround>
         <H2>umíme přinést výsledky</H2>
       </SectionWithSpaceAround>
-      <div>
-        <ReferenceContainer withDesktopBackground={true} reverseMobileOrder={true}>
-          <LeftReferenceInfoWrapper>
-            <TextWrapper>
-              <ReferenceTitle>Notino - parfémy a kosmetika</ReferenceTitle>
-              <ReferenceDescription>
-                E-shop aplikace pro největší obchod s kosmetikou ve střední Evropě.
-              </ReferenceDescription>
-            </TextWrapper>
-          </LeftReferenceInfoWrapper>
-          <ReferenceImage src={notino} />
-        </ReferenceContainer>
-
-        <ReferenceContainer withTopPadding={true}>
-          <ReferenceImage src={mm} />
-          <SectionWithSpaceAround>
-            <ReferenceTitle>M&amp;M - Statistiky</ReferenceTitle>
+      <ReferenceContainer withDesktopBackground={true} reverseMobileOrder={true}>
+        <LeftReferenceInfoWrapper>
+          <TextWrapper>
+            <ReferenceTitle>Notino - parfémy a kosmetika</ReferenceTitle>
             <ReferenceDescription>
-              Statistiky prodeje nemovitostí určené pro vedení společnosti a makléře.
+              E-shop aplikace pro největší obchod s kosmetikou ve střední Evropě.
             </ReferenceDescription>
-          </SectionWithSpaceAround>
-        </ReferenceContainer>
-      </div>
+          </TextWrapper>
+        </LeftReferenceInfoWrapper>
+        <ReferenceImage src={notino} />
+      </ReferenceContainer>
+
+      <ReferenceContainer withTopPadding={true}>
+        <ReferenceImage src={mm} />
+        <SectionWithSpaceAround>
+          <ReferenceTitle>M&amp;M - Statistiky</ReferenceTitle>
+          <ReferenceDescription>
+            Statistiky prodeje nemovitostí určené pro vedení společnosti a makléře.
+          </ReferenceDescription>
+        </SectionWithSpaceAround>
+      </ReferenceContainer>
     </>
   );
 };

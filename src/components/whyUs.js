@@ -11,6 +11,7 @@ const ReasonImage = styled.img`
   top: 120px;
   right: 0;
   height: calc(100vh - 120px);
+  width: 100%;
   z-index: -1;
 `;
 
@@ -87,7 +88,8 @@ const ReasonsWrapper = styled.div`
   padding: 0 3rem 4rem 3rem;
 
   @media only screen and (max-width: 768px) {
-    position: relative;
+    /* Ugly way to enforce right positioning of text over sticky image */
+    margin-top: calc((100vh - 100px) * (-1));
     width: calc(100% - 2rem);
     padding: 0 1rem;
   }
@@ -111,50 +113,24 @@ const whyUsData = [
   },
 ];
 
-const WhyUs = () => {
-  const [topPositionOfImageMobile, setTopPositionOfImageMobile] = React.useState(0);
-
-  React.useLayoutEffect(() => {
-    const calculateImageTopPosition = () => {
-      const mobileScreenHeight = window.innerHeight - 100;
-
-      const whyUsWrapperElement = document.getElementById('whyUsWrapper');
-
-      const whyUsWrapperHeight = whyUsWrapperElement.clientHeight;
-
-      const maxTopMobileShift = whyUsWrapperHeight > mobileScreenHeight ? whyUsWrapperHeight - mobileScreenHeight : 0;
-      const currentMobileShift = whyUsWrapperElement.getBoundingClientRect().top * -1 + 100;
-      const newTopMobilePosition = currentMobileShift > maxTopMobileShift ? maxTopMobileShift : currentMobileShift;
-
-      setTopPositionOfImageMobile(newTopMobilePosition < 0 ? 0 : newTopMobilePosition);
-    };
-
-    document.addEventListener('scroll', calculateImageTopPosition);
-
-    return () => {
-      document.removeEventListener('scroll', calculateImageTopPosition);
-    };
-  }, []);
-
-  return (
-    <MobileWrapper>
-      <WhyUsWrapper id="whyUsWrapper" mobileTopPosition={topPositionOfImageMobile}>
-          <ReasonsWrapper>
-            <H2 style={{ marginTop: '2rem' }}>proč zvolit codeers</H2>
-            <MainReasonInfo>Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.</MainReasonInfo>
-            {whyUsData.map((step) => (
-              <div key={step.title}>
-                <ReasonTitle>{step.title}</ReasonTitle>
-                <ReasonDescription>{step.description}</ReasonDescription>
-              </div>
-            ))}
-          </ReasonsWrapper>
-          <ImageWrapper>
-            <ReasonImage src={whyUsImage} />
-          </ImageWrapper>
-      </WhyUsWrapper>
-    </MobileWrapper>
-  );
-};
+const WhyUs = () => (
+  <MobileWrapper>
+    <WhyUsWrapper>
+      <ReasonsWrapper>
+        <H2 style={{ marginTop: '2rem' }}>proč zvolit codeers</H2>
+        <MainReasonInfo>Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.</MainReasonInfo>
+        {whyUsData.map((step) => (
+          <div key={step.title}>
+            <ReasonTitle>{step.title}</ReasonTitle>
+            <ReasonDescription>{step.description}</ReasonDescription>
+          </div>
+        ))}
+      </ReasonsWrapper>
+      <ImageWrapper>
+        <ReasonImage src={whyUsImage} />
+      </ImageWrapper>
+    </WhyUsWrapper>
+  </MobileWrapper>
+);
 
 export default WhyUs;
