@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import styled from 'styled-components';
 
 const FooterWrapper = styled.div`
@@ -17,12 +18,8 @@ const CopyrightMessage = styled.p`
   font-weight: 700;
 `;
 
-const Footer = () => {
-  return (
-    <FooterWrapper>
-      <CopyrightMessage>&copy; 2021 codeers</CopyrightMessage>
-    </FooterWrapper>
-  );
-};
-
-export default Footer;
+export const Footer = () => (
+  <FooterWrapper>
+    <CopyrightMessage>&copy; 2021 codeers</CopyrightMessage>
+  </FooterWrapper>
+);

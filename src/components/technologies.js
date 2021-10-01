@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 import { useTranslation } from 'react-i18next';
+
+import styled from 'styled-components';
 
 import android from '../svg/new/tech/tech-1.svg';
 import ios from '../svg/new/tech/tech-2.svg';
@@ -50,6 +51,7 @@ const TechnologyItem = ({ technology }) => {
     </Technology>
   );
 };
+
 export const Technologies = () => {
   const { t } = useTranslation();
 

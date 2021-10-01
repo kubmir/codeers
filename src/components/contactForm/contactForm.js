@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 
 import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 
 import { FlexContainer, H2 } from '../shared';
+
 import {
   ContactFormWrapper,
   TextAreaWrapper,
@@ -15,11 +17,10 @@ import {
 } from './styled';
 
 import './styles.css';
-import { useTranslation } from 'react-i18next';
 
 const CZECH_PHONE_NUMBER_REGEX = /([+]?\d{1,3}[. \s]?)?(\d{9}?)/g;
 
-const ContactForm = () => {
+export const ContactForm = () => {
   const { t } = useTranslation();
 
   const [submitClicked, setSubmitClicked] = React.useState(false);
@@ -119,5 +120,3 @@ const ContactForm = () => {
     </ContactWrapper>
   );
 };
-
-export default ContactForm;

@@ -1,5 +1,6 @@
-import { useI18next } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
+
+import { useI18next } from 'gatsby-plugin-react-i18next';
 import styled from 'styled-components';
 
 const LanguageWrapper = styled.div`

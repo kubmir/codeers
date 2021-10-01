@@ -1,16 +1,16 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
+import { useInView } from 'react-intersection-observer';
+
 import styled from 'styled-components';
 
-import { Description, H2 } from './shared';
-
-import notino from '../svg/new/notino.jpg';
+import { moveFromLeft, moveFromRight } from '../css/animations';
 import mm from '../svg/new/mm.png';
-import { SectionWithSpaceAround } from './shared';
+import notino from '../svg/new/notino.jpg';
+
+import { Description, H2, SectionWithSpaceAround } from './shared';
 
 import './layout.css';
-import { useInView } from 'react-intersection-observer';
-import { moveFromLeft, moveFromRight } from '../css/animations';
-import { useTranslation } from 'react-i18next';
 
 const ReferenceImage = styled.img`
   width: 60%;
@@ -115,7 +115,7 @@ const MMReference = () => {
   );
 };
 
-const References = () => {
+export const References = () => {
   const { t } = useTranslation();
 
   return (
@@ -130,5 +130,3 @@ const References = () => {
     </>
   );
 };
-
-export default References;

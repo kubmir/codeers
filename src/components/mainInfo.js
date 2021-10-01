@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
+
 import styled from 'styled-components';
+
 import { fadeIn } from '../css/animations';
 import titleImage from '../svg/new/top.png';
 
@@ -43,7 +45,7 @@ const HeadingWrapper = styled.div`
   flex-grow: 1;
 `;
 
-const MainInfo = () => {
+export const MainInfo = () => {
   const { t } = useTranslation();
 
   return (
@@ -62,4 +64,3 @@ const MainInfo = () => {
   );
 };
 
-export default MainInfo;

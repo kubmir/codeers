@@ -1,11 +1,12 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
+
 import styled from 'styled-components';
 
 import howWeWorkImage from '../svg/new/how.png';
 
 import { Description, H2 } from './shared';
 import './layout.css';
-import { useTranslation } from 'react-i18next';
 
 const HowWeWorkImage = styled.img`
   position: sticky;
@@ -163,7 +164,7 @@ const getStepsData = (t) => [
   },
 ];
 
-const HowWeWork = () => {
+export const HowWeWork = () => {
   const { t } = useTranslation();
   const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
 
@@ -239,5 +240,3 @@ const HowWeWork = () => {
     </MobileWrapper>
   );
 };
-
-export default HowWeWork;

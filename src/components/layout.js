@@ -1,5 +1,6 @@
 import * as React from 'react';
-import PropTypes from 'prop-types';
+import { useTranslation } from 'react-i18next';
+
 import styled from 'styled-components';
 
 import logo from '../svg/codeers-logo.svg';
@@ -9,7 +10,6 @@ import './layout.css';
 
 import '@fontsource/red-hat-display';
 import '@fontsource/red-hat-text';
-import { useTranslation } from 'react-i18next';
 
 const LogoWrapper = styled.div`
   max-width: 400px;
@@ -64,7 +64,7 @@ const ContactLink = styled.a`
   }
 `;
 
-const Layout = ({ children }) => {
+export const Layout = ({ children }) => {
   const { t } = useTranslation();
 
   return (
@@ -83,9 +83,3 @@ const Layout = ({ children }) => {
     </>
   );
 };
-
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default Layout;

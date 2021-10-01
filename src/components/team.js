@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
-import styled from 'styled-components';
-import { fadeIn } from '../css/animations';
 
+import styled from 'styled-components';
+
+import { fadeIn } from '../css/animations';
 import michal from '../svg/new/faces/michal.png';
 import rado from '../svg/new/faces/rado.png';
 import sarka from '../svg/new/faces/sarka.png';
+
 import { Description, H2 } from './shared';
 
 const MembersWrapper = styled.div`

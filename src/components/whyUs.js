@@ -1,6 +1,7 @@
 import * as React from 'react';
-import styled from 'styled-components';
 import { useTranslation } from 'react-i18next';
+
+import styled from 'styled-components';
 
 import whyUsImage from '../svg/new/why.png';
 
@@ -106,7 +107,7 @@ const getWhyUsData = (t) => [
   },
 ];
 
-const WhyUs = () => {
+export const WhyUs = () => {
   const { t } = useTranslation();
 
   return (
@@ -131,5 +132,3 @@ const WhyUs = () => {
     </MobileWrapper>
   );
 };
-
-export default WhyUs;
