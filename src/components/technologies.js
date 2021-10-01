@@ -1,5 +1,6 @@
 import * as React from 'react';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
+import { useInView } from 'react-intersection-observer';
 
 import android from '../svg/new/tech/tech-1.svg';
 import ios from '../svg/new/tech/tech-2.svg';
@@ -24,6 +25,11 @@ const TechnologiesWrapper = styled.div`
   }
 `;
 
+const technologyFadeIn = keyframes`
+  0% {opacity:0;}
+  100% {opacity:1;}
+`;
+
 const Technology = styled.div`
   display: flex;
   align-items: center;
@@ -31,16 +37,28 @@ const Technology = styled.div`
   width: 100%;
 `;
 
+const TechnologyImage = styled.img`
+  animation-name: ${props => props.inView ? technologyFadeIn : ''};
+  animation-duration: 3000ms;
+`;
+
 const techonologies = [android, ios, kotlin, swift, reactivex, firebase, flutter];
 
+const TechnologyItem = ({ technology }) => {
+  const { ref, inView } = useInView();
+
+  return (
+    <Technology ref={ref}>
+      <TechnologyImage src={technology} inView={inView} />
+    </Technology>
+  );
+};
 export const Technologies = () => (
   <>
     <H2>naše technologie</H2>
     <TechnologiesWrapper>
       {techonologies.map((technology) => (
-        <Technology key={technology}>
-          <img alt="" src={technology} />
-        </Technology>
+        <TechnologyItem key={technology} technology={technology} />
       ))}
     </TechnologiesWrapper>
   </>

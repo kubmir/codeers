@@ -28,9 +28,10 @@ const StepTitle = styled.h3`
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    border: ${(props) => (props.isActive ? '4px solid #E8C81D' : '4px solid #C4C4C4')};;
+    border: ${(props) => (props.isActive ? '4px solid #E8C81D' : '4px solid #C4C4C4')};
     border-radius: 50%;
     background: #fff;
+    transition: background 0.6s ease-out;
 
     @media only screen and (max-width: 600px) {
       top: 2.5rem;
@@ -106,6 +107,7 @@ const Line = styled.div`
   margin-top: 3.25rem;
   width: 4px;
   background: ${(props) => (props.isActive ? '#E8C81D' : '#C4C4C4')};
+  transition: background 0.4s ease-in;
 
   @media only screen and (max-width: 768px) {
     margin-top: 2.5rem;
@@ -160,26 +162,80 @@ const stepsData = [
   },
 ];
 
-const HowWeWork = () => (
-  <MobileWrapper>
-    <HowWeWorkWrapper>
-      <ImageWrapper>
-        <HowWeWorkImage src={howWeWorkImage} />
-      </ImageWrapper>
-      <StepsWrapper>
-        <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
-        {stepsData.map((step) => (
-          <StepWrapper key={step.title}>
-            <Line />
-            <StepInfoWrapper>
-              <StepTitle>{step.title}</StepTitle>
-              <StepDescription>{step.description}</StepDescription>
-            </StepInfoWrapper>
-          </StepWrapper>
-        ))}
-      </StepsWrapper>
-    </HowWeWorkWrapper>
-  </MobileWrapper>
-);
+const HowWeWork = () => {
+  const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
+
+  React.useLayoutEffect(() => {
+    const decideActiveStep = () => {
+      const steps = document.getElementById('steps');
+      const stepsHeadings = steps.querySelectorAll('h3');
+      const middleOfViewport = window.innerHeight / 2;
+      const currentStepHeadingPosition = stepsHeadings[currentStepIndex].getBoundingClientRect().top;
+
+      if (currentStepIndex === 0) {
+        const nextStepHeadingPosition = stepsHeadings[currentStepIndex + 1].getBoundingClientRect().top;
+        const newIndex =
+          Math.abs(currentStepHeadingPosition - middleOfViewport) < Math.abs(nextStepHeadingPosition - middleOfViewport)
+            ? currentStepIndex
+            : currentStepIndex + 1;
+
+        return setCurrentStepIndex(newIndex);
+      }
+
+      if (currentStepIndex === stepsHeadings.length - 1) {
+        const previousStepHeadingPosition = stepsHeadings[currentStepIndex - 1].getBoundingClientRect().top;
+        const newIndex =
+          Math.abs(currentStepHeadingPosition - middleOfViewport) <
+          Math.abs(previousStepHeadingPosition - middleOfViewport)
+            ? currentStepIndex
+            : currentStepIndex - 1;
+
+        return setCurrentStepIndex(newIndex);
+      }
+
+      const nextStepHeadingPosition = stepsHeadings[currentStepIndex + 1].getBoundingClientRect().top;
+      const previousStepHeadingPosition = stepsHeadings[currentStepIndex - 1].getBoundingClientRect().top;
+      const betterPositionrOfNeighbours =
+        Math.abs(nextStepHeadingPosition - middleOfViewport) < Math.abs(previousStepHeadingPosition - middleOfViewport)
+          ? nextStepHeadingPosition
+          : previousStepHeadingPosition;
+
+      const newIndex =
+        Math.abs(currentStepHeadingPosition - middleOfViewport) <
+        Math.abs(betterPositionrOfNeighbours - middleOfViewport)
+          ? currentStepIndex
+          : betterPositionrOfNeighbours === previousStepHeadingPosition
+          ? currentStepIndex - 1
+          : currentStepIndex + 1;
+      setCurrentStepIndex(newIndex);
+    };
+
+    document.addEventListener('scroll', decideActiveStep);
+
+    return () => document.removeEventListener('scroll', decideActiveStep);
+  }, [currentStepIndex]);
+
+  return (
+    <MobileWrapper>
+      <HowWeWorkWrapper>
+        <ImageWrapper>
+          <HowWeWorkImage src={howWeWorkImage} />
+        </ImageWrapper>
+        <StepsWrapper id="steps">
+          <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
+          {stepsData.map((step, index) => (
+            <StepWrapper key={step.title}>
+              <Line isActive={currentStepIndex === index} />
+              <StepInfoWrapper>
+                <StepTitle isActive={currentStepIndex === index}>{step.title}</StepTitle>
+                <StepDescription>{step.description}</StepDescription>
+              </StepInfoWrapper>
+            </StepWrapper>
+          ))}
+        </StepsWrapper>
+      </HowWeWorkWrapper>
+    </MobileWrapper>
+  );
+};
 
 export default HowWeWork;
