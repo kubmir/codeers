@@ -10,6 +10,7 @@ import { SectionWithSpaceAround } from './shared';
 import './layout.css';
 import { useInView } from 'react-intersection-observer';
 import { moveFromLeft, moveFromRight } from '../css/animations';
+import { useTranslation } from 'react-i18next';
 
 const ReferenceImage = styled.img`
   width: 60%;
@@ -79,15 +80,16 @@ const ReferenceContainer = styled.div`
 `;
 
 const NotinoReference = () => {
+  const { t } = useTranslation();
   const { ref, inView } = useInView();
 
   return (
     <ReferenceContainer ref={ref} withDesktopBackground={true} reverseMobileOrder={true}>
       <LeftReferenceInfoWrapper animation={inView ? moveFromLeft : ''}>
         <TextWrapper>
-          <ReferenceTitle>Notino - parfémy a kosmetika</ReferenceTitle>
+          <ReferenceTitle>{t('Notino - parfémy a kosmetika')}</ReferenceTitle>
           <ReferenceDescription>
-            E-shop aplikace pro největší obchod s kosmetikou ve střední Evropě.
+            {t('E-shop aplikace pro největší obchod s kosmetikou ve střední Evropě.')}
           </ReferenceDescription>
         </TextWrapper>
       </LeftReferenceInfoWrapper>
@@ -97,15 +99,16 @@ const NotinoReference = () => {
 };
 
 const MMReference = () => {
+  const { t } = useTranslation();
   const { ref, inView } = useInView();
 
   return (
     <ReferenceContainer ref={ref} withTopPadding={true}>
       <ReferenceImage src={mm} animation={inView ? moveFromLeft : ''} mobileAnimation={inView ? moveFromRight : ''} />
       <SectionWithSpaceAround animation={inView ? moveFromRight : ''} mobileAnimation={inView ? moveFromLeft : ''}>
-        <ReferenceTitle>M&amp;M - Statistiky</ReferenceTitle>
+        <ReferenceTitle>{t('M&M - Statistiky')}</ReferenceTitle>
         <ReferenceDescription>
-          Statistiky prodeje nemovitostí určené pro vedení společnosti a makléře.
+          {t('Statistiky prodeje nemovitostí určené pro vedení společnosti a makléře.')}
         </ReferenceDescription>
       </SectionWithSpaceAround>
     </ReferenceContainer>
@@ -113,10 +116,12 @@ const MMReference = () => {
 };
 
 const References = () => {
+  const { t } = useTranslation();
+
   return (
     <>
       <SectionWithSpaceAround>
-        <H2>umíme přinést výsledky</H2>
+        <H2>{t('umíme přinést výsledky')}</H2>
       </SectionWithSpaceAround>
 
       <NotinoReference />

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
 import { fadeIn } from '../css/animations';
@@ -61,21 +62,21 @@ const MemberImage = styled.img`
   }
 `;
 
-const teamMembers = [
+const getTeamMembers = (t) => [
   {
     image: michal,
     name: 'Michal',
-    description: 'Postará se o to, aby vaše aplikace byla vždy technicky mezi špičkou a podle posledních trendů.',
+    description: t('Postará se o to, aby vaše aplikace byla vždy technicky mezi špičkou a podle posledních trendů.'),
   },
   {
     image: rado,
     name: 'Radovan',
-    description: 'Díky němu bude vaše aplikace dělat to co má a užívatelé ji budou zbožňovat.',
+    description: t('Díky němu bude vaše aplikace dělat to co má a užívatelé ji budou zbožňovat.'),
   },
   {
     image: sarka,
     name: 'Šárka',
-    description: 'Odřídí a odkomunikuje celý projekt od jeho začátku až ke zdárnému konci.',
+    description: t('Odřídí a odkomunikuje celý projekt od jeho začátku až ke zdárnému konci.'),
   },
 ];
 
@@ -93,13 +94,17 @@ const TeamMember = ({ member }) => {
   );
 };
 
-export const Team = () => (
-  <>
-    <H2>jsme codeers</H2>
-    <MembersWrapper>
-      {teamMembers.map((member) => (
-        <TeamMember key={member.name} member={member} />
-      ))}
-    </MembersWrapper>
-  </>
-);
+export const Team = () => {
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <H2>{t('jsme codeers')}</H2>
+      <MembersWrapper>
+        {getTeamMembers(t).map((member) => (
+          <TeamMember key={member.name} member={member} />
+        ))}
+      </MembersWrapper>
+    </>
+  );
+};

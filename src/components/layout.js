@@ -9,6 +9,7 @@ import './layout.css';
 
 import '@fontsource/red-hat-display';
 import '@fontsource/red-hat-text';
+import { useTranslation } from 'react-i18next';
 
 const LogoWrapper = styled.div`
   max-width: 400px;
@@ -64,6 +65,8 @@ const ContactLink = styled.a`
 `;
 
 const Layout = ({ children }) => {
+  const { t } = useTranslation();
+
   return (
     <>
         <HeaderWrapper>
@@ -72,7 +75,7 @@ const Layout = ({ children }) => {
               <Logo src={logo} />
             </LogoWrapper>
           </a>
-          <ContactLink href="#contactForm">Kontakt</ContactLink>
+          <ContactLink href="#contactForm">{t('Kontakt')}</ContactLink>
           <LanguageSwitcher />
         </HeaderWrapper>
 

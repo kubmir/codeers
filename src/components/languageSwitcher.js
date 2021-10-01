@@ -1,3 +1,4 @@
+import { useI18next } from 'gatsby-plugin-react-i18next';
 import * as React from 'react';
 import styled from 'styled-components';
 
@@ -17,10 +18,16 @@ const Language = styled.div`
 `;
 
 export const LanguageSwitcher = () => {
+  const { language, changeLanguage } = useI18next();
+
   return (
     <LanguageWrapper>
-      <Language active={true}>CS</Language>
-      <Language>EN</Language>
+      <Language onClick={() => changeLanguage('cs')} active={language === 'cs'}>
+        CS
+      </Language>
+      <Language onClick={() => changeLanguage('en')} active={language === 'en'}>
+        EN
+      </Language>
     </LanguageWrapper>
   );
 };

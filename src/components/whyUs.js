@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 import whyUsImage from '../svg/new/why.png';
 
@@ -84,42 +85,51 @@ const ReasonsWrapper = styled.div`
   }
 `;
 
-const whyUsData = [
+const getWhyUsData = (t) => [
   {
-    title: 'tvoříme nová řešení od zadání po nasazení',
-    description:
+    title: t('tvoříme nová řešení od zadání po nasazení'),
+    description: t(
       'Máte nápad, ale nemáte prostor či dovednosti na jeho realizaci? Provedeme vás celým procesem - od zadání, přes implementaci, až po nasazení a provoz aplikace.',
+    ),
   },
   {
-    title: 'vylepšíme váš současný produkt',
-    description:
+    title: t('vylepšíme váš současný produkt'),
+    description: t(
       'Máte hotovou či rozpracovanou aplikaci, ale nenaplňuje funkčností či designem očekávání? Provedeme analýzu stávajícího řešení, navrhneme, jak jej dostat na vyšší úroveň a postaráme se o implementaci.',
+    ),
   },
   {
-    title: 'pomůžeme vašemu týmu',
-    description:
+    title: t('pomůžeme vašemu týmu'),
+    description: t(
       'Jste ve slepé uličce a nevíte si rady s vývojem aplikace? Chybí vám znalosti a zkušenosti? Ocenili byste pomoc s definicí zadání či organizací práce? Dokážeme vaše projekty a procesy dát zase do chodu a pomoci vám s růstem.',
+    ),
   },
 ];
 
-const WhyUs = () => (
-  <MobileWrapper>
-    <WhyUsWrapper>
-      <ReasonsWrapper>
-        <H2 style={{ marginTop: '2rem' }}>proč zvolit codeers</H2>
-        <MainReasonInfo>Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.</MainReasonInfo>
-        {whyUsData.map((step) => (
-          <div key={step.title}>
-            <ReasonTitle>{step.title}</ReasonTitle>
-            <Description>{step.description}</Description>
-          </div>
-        ))}
-      </ReasonsWrapper>
-      <ImageWrapper>
-        <ReasonImage src={whyUsImage} />
-      </ImageWrapper>
-    </WhyUsWrapper>
-  </MobileWrapper>
-);
+const WhyUs = () => {
+  const { t } = useTranslation();
+
+  return (
+    <MobileWrapper>
+      <WhyUsWrapper>
+        <ReasonsWrapper>
+          <H2 style={{ marginTop: '2rem' }}>{t('proč zvolit codeers')}</H2>
+          <MainReasonInfo>
+            {t('Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.')}
+          </MainReasonInfo>
+          {getWhyUsData(t).map((step) => (
+            <div key={step.title}>
+              <ReasonTitle>{step.title}</ReasonTitle>
+              <Description>{step.description}</Description>
+            </div>
+          ))}
+        </ReasonsWrapper>
+        <ImageWrapper>
+          <ReasonImage src={whyUsImage} />
+        </ImageWrapper>
+      </WhyUsWrapper>
+    </MobileWrapper>
+  );
+};
 
 export default WhyUs;

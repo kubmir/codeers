@@ -1,6 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
+import { useTranslation } from 'react-i18next';
 
 import android from '../svg/new/tech/tech-1.svg';
 import ios from '../svg/new/tech/tech-2.svg';
@@ -49,13 +50,17 @@ const TechnologyItem = ({ technology }) => {
     </Technology>
   );
 };
-export const Technologies = () => (
-  <>
-    <H2>naše technologie</H2>
-    <TechnologiesWrapper>
-      {techonologies.map((technology) => (
-        <TechnologyItem key={technology} technology={technology} />
-      ))}
-    </TechnologiesWrapper>
-  </>
-);
+export const Technologies = () => {
+  const { t } = useTranslation();
+
+  return (
+    <>
+      <H2>{t('naše technologie')}</H2>
+      <TechnologiesWrapper>
+        {techonologies.map((technology) => (
+          <TechnologyItem key={technology} technology={technology} />
+        ))}
+      </TechnologiesWrapper>
+    </>
+  );
+};

@@ -15,10 +15,13 @@ import {
 } from './styled';
 
 import './styles.css';
+import { useTranslation } from 'react-i18next';
 
 const CZECH_PHONE_NUMBER_REGEX = /([+]?\d{1,3}[. \s]?)?(\d{9}?)/g;
 
 const ContactForm = () => {
+  const { t } = useTranslation();
+
   const [submitClicked, setSubmitClicked] = React.useState(false);
   const [contactFormData, setContactFormData] = React.useState({});
   const [isEmailSent, setIsEmailSent] = React.useState(false);
@@ -48,7 +51,7 @@ const ContactForm = () => {
       <FlexContainer style={{ marginTop: '160px' }} centered={true}>
         <CheckCircleIcon style={{ alignSelf: 'center', color: '#28a745' }} color="success" />
         <SuccessMessage>
-          Vaše zpráva byla odeslána týmu Codeers. V brzké době Vás budeme kontaktovat. Děkujeme.
+          {t('Vaše zpráva byla odeslána týmu Codeers. V brzké době Vás budeme kontaktovat. Děkujeme.')}
         </SuccessMessage>
       </FlexContainer>
     );
@@ -58,39 +61,41 @@ const ContactForm = () => {
 
   return (
     <ContactWrapper id="contactForm">
-      <H2 style={{ marginTop: 0 }}>kontaktujte nás</H2>
+      <H2 style={{ marginTop: 0 }}>{t('kontaktujte nás')}</H2>
       <ContactFormWrapper>
         <TextField
           id="name"
-          label="Jméno"
+          label={t('Jméno')}
           variant="outlined"
-          helperText={submitClicked && !contactFormData.name ? 'Povinný údaj' : ''}
+          helperText={submitClicked && !contactFormData.name ? t('Povinný údaj') : ''}
           onChange={onChange}
           value={contactFormData.name}
           error={submitClicked && !contactFormData.name}
         />
         <TextField
           id="email"
-          label="E-mail"
+          label={t('E-mail')}
           variant="outlined"
-          helperText={submitClicked && !contactFormData.email ? 'Povinný údaj' : ''}
+          helperText={submitClicked && !contactFormData.email ? t('Povinný údaj') : ''}
           onChange={onChange}
           value={contactFormData.email}
           error={submitClicked && !contactFormData.email}
         />
         <TextField
           id="phone"
-          label="Telefon (nepovinně)"
+          label={t('Telefon (nepovinně)')}
           type="tel"
           variant="outlined"
           onChange={onChange}
           value={contactFormData.phone}
           error={submitClicked && contactFormData.phone && isPhoneInvalid}
-          helperText={submitClicked && contactFormData.phone && isPhoneInvalid ? 'Zadejte validní telefonní číslo' : ''}
+          helperText={
+            submitClicked && contactFormData.phone && isPhoneInvalid ? t('Zadejte validní telefonní číslo') : ''
+          }
         />
         <TextField
           id="company"
-          label="Společnost (nepovinně)"
+          label={t('Společnost (nepovinně)')}
           variant="outlined"
           onChange={onChange}
           value={contactFormData.company}
@@ -99,7 +104,7 @@ const ContactForm = () => {
       <TextAreaWrapper>
         <TextField
           id="project"
-          label="Stručně popište svůj projekt (nepovinně)"
+          label={t('Stručně popište svůj projekt (nepovinně)')}
           multiline
           minRows={8}
           maxRows={10}
@@ -109,8 +114,8 @@ const ContactForm = () => {
           value={contactFormData.project}
         />
       </TextAreaWrapper>
-      <GdprInfoWrapper>Odesláním souhlasíte se zpracováním osobních údajů</GdprInfoWrapper>
-      <SendButtonWrapper onClick={onSubmit}>odeslat</SendButtonWrapper>
+      <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů')}</GdprInfoWrapper>
+      <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
     </ContactWrapper>
   );
 };

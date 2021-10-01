@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 import { fadeIn } from '../css/animations';
 import titleImage from '../svg/new/top.png';
@@ -38,25 +39,27 @@ const SmallHeading = styled.span`
   font-size: 32px;
 `;
 
-const TitleImage = styled.img``;
-
 const HeadingWrapper = styled.div`
   flex-grow: 1;
 `;
 
-const MainInfo = () => (
-  <Wrapper>
-    <HeadingWrapper>
-      <MainHeading>
-        mobilní aplikace
-        <br />
-        velké věci
-        <br />
-        <SmallHeading>na malém prostoru</SmallHeading>
-      </MainHeading>
-    </HeadingWrapper>
-    <TitleImage src={titleImage} />
-  </Wrapper>
-);
+const MainInfo = () => {
+  const { t } = useTranslation();
+
+  return (
+    <Wrapper>
+      <HeadingWrapper>
+        <MainHeading>
+          {t('mobilní aplikace')}
+          <br />
+          {t('velké věci')}
+          <br />
+          <SmallHeading>{t('na malém prostoru')}</SmallHeading>
+        </MainHeading>
+      </HeadingWrapper>
+      <img alt="Codeers" src={titleImage} />
+    </Wrapper>
+  );
+};
 
 export default MainInfo;

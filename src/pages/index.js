@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { graphql } from 'gatsby';
 
 import ContactForm from '../components/contactForm/contactForm';
 import Footer from '../components/footer';
@@ -31,3 +32,18 @@ const IndexPage = () => (
 );
 
 export default IndexPage;
+
+
+export const query = graphql`
+  query($language: String!) {
+    locales: allLocale(filter: {language: {eq: $language}}) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

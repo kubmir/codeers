@@ -5,6 +5,7 @@ import howWeWorkImage from '../svg/new/how.png';
 
 import { Description, H2 } from './shared';
 import './layout.css';
+import { useTranslation } from 'react-i18next';
 
 const HowWeWorkImage = styled.img`
   position: sticky;
@@ -117,45 +118,53 @@ const StepInfoWrapper = styled.div`
   position: relative;
 `;
 
-const stepsData = [
+const getStepsData = (t) => [
   {
-    title: 'Úvodní schůzka',
-    description:
+    title: t('Úvodní schůzka'),
+    description: t(
       'Nezávazně nás kontaktujte a sdělte nám svoji představu. Pokud ji nemáte ucelenou, namísto dlouhých debat uspořádáme produktový workshop a společně najdeme odpovědi k otázkám: “Proč chcete mobilní aplikaci?”, “Kdo ji bude používat?”, “Jaký problém bude řešit?” či “Jaké technologie preferujete?”.',
+    ),
   },
   {
-    title: 'Analýza a UX',
-    description:
+    title: t('Analýza a UX'),
+    description: t(
       'Když víme co a pro koho vytváříme, nic nám nebrání pustit se do průzkumu trhu, analýzy konkurence a zmapování potřeb cílových uživatelů. Na základě toho vytvoříme návrhy a prototypy s ohledem na uživatelský zážitek. Každý návrh na uživatelích otestujeme a k vám se dostane finální wireframe, ze kterého si utvoříte představu o výsledné aplikaci.',
+    ),
   },
   {
-    title: 'Design',
-    description:
+    title: t('Design'),
+    description: t(
       'Po odsouhlasení wireframu máte jasnou představu o tom, jak bude aplikace fungovat. Neméně důležitý je ale i její vzhled. Na řadu tedy přichází grafický návrh, který s vámi budeme řešit, dokud nebudete s grafickou stránkou spokojeni. A protože respektujeme guidelines pro jednotlivé platformy, tak jsou naše aplikace nejen hezké na pohled, ale i intuitivní pro jejich uživatele při ovládání.',
+    ),
   },
   {
-    title: 'Vývoj',
-    description:
+    title: t('Vývoj'),
+    description: t(
       'V zadání máme jasno a naši vývojáři se mohou pustit do samotné realizace. Pracujeme iterativně a v průběhu celého vývoje s vámi budeme pravidelně v kontaktu, ať máte všechno pod kontrolou. Aplikace tvoříme nativně pro Android a iOS, nebo multriplatformě pomocí Flutter. Vždy však s ohledem na nejnovější trendy a technologie.',
+    ),
   },
   {
-    title: 'Testování',
-    description:
+    title: t('Testování'),
+    description: t(
       'Aplikace je skoro hotová, je ale třeba ji ještě řádně otestovat. U nás se vždy najde někdo, kdo aplikaci dokáže rozbít. A dokud nejsme s kvalitou spokojeni, tak práce vývojářů nekončí.',
+    ),
   },
   {
-    title: 'Vydání',
-    description:
+    title: t('Vydání'),
+    description: t(
       'Hotovou aplikaci zveřejníme v obchodech Google Play a App Store. Dostane se tak přímo k vašim zákazníkům. Zveřejnit ji ale můžeme i interně v rámci vaší firmy jen pro vaše zaměstnance. V obou případech se o všechno postaráme za vás.',
+    ),
   },
   {
-    title: 'Podpora, růst a optimalizace',
-    description:
+    title: t('Podpora, růst a optimalizace'),
+    description: t(
       'Na úspěšnou spolupráci můžeme navázat dalšími kroky, které by aplikaci ještě vylepšily, či napomohly k jejímu růstu a optimalizaci. Zároveň se postaráme i o to, aby aplikace stále fungovala jak má.',
+    ),
   },
 ];
 
 const HowWeWork = () => {
+  const { t } = useTranslation();
   const [currentStepIndex, setCurrentStepIndex] = React.useState(0);
 
   React.useLayoutEffect(() => {
@@ -215,8 +224,8 @@ const HowWeWork = () => {
           <HowWeWorkImage src={howWeWorkImage} />
         </ImageWrapper>
         <StepsWrapper id="steps">
-          <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
-          {stepsData.map((step, index) => (
+          <H2 style={{ marginTop: '2rem' }}>{t('jak pracujeme')}</H2>
+          {getStepsData(t).map((step, index) => (
             <StepWrapper key={step.title}>
               <Line isActive={index <= currentStepIndex} />
               <StepInfoWrapper>
