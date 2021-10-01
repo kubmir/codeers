@@ -1,10 +1,12 @@
 import * as React from 'react';
+import { useInView } from 'react-intersection-observer';
 import styled from 'styled-components';
+import { fadeIn } from '../css/animations';
 
 import michal from '../svg/new/faces/michal.png';
 import rado from '../svg/new/faces/rado.png';
 import sarka from '../svg/new/faces/sarka.png';
-import { H2 } from './shared';
+import { Description, H2 } from './shared';
 
 const MembersWrapper = styled.div`
   display: grid;
@@ -24,6 +26,13 @@ const Member = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  animation-name: ${(props) => (props.isVisible ? fadeIn : '')};
+  animation-duration: 2000ms;
+
+  @media only screen and (max-width: 600px) {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 `;
 
 const MemberName = styled.p`
@@ -38,20 +47,18 @@ const MemberName = styled.p`
   }
 `;
 
-const MemberDescription = styled.p`
-  font-size: 1.25rem;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 0.75rem;
-  }
-`;
-
 const MemberTextWrapper = styled.div`
   padding: 0 1.5rem;
 
   @media only screen and (max-width: 600px) {
-    padding: 0 0.875rem;
-}
+    padding: 0 1rem;
+  }
+`;
+
+const MemberImage = styled.img`
+  @media only screen and (max-width: 600px) {
+    width: 25%;
+  }
 `;
 
 const teamMembers = [
@@ -72,18 +79,26 @@ const teamMembers = [
   },
 ];
 
+const TeamMember = ({ member }) => {
+  const { ref, inView } = useInView();
+
+  return (
+    <Member key={member.name} ref={ref} isVisible={inView}>
+      <MemberImage alt={member.name} src={member.image} />
+      <MemberTextWrapper>
+        <MemberName>{member.name}</MemberName>
+        <Description>{member.description}</Description>
+      </MemberTextWrapper>
+    </Member>
+  );
+};
+
 export const Team = () => (
   <>
     <H2>jsme codeers</H2>
     <MembersWrapper>
       {teamMembers.map((member) => (
-        <Member key={member.name}>
-          <img alt={member.name} src={member.image} />
-          <MemberTextWrapper>
-            <MemberName>{member.name}</MemberName>
-            <MemberDescription>{member.description}</MemberDescription>
-          </MemberTextWrapper>
-        </Member>
+        <TeamMember key={member.name} member={member} />
       ))}
     </MembersWrapper>
   </>

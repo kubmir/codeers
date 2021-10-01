@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import howWeWorkImage from '../svg/new/how.png';
 
-import { H2 } from './shared';
+import { Description, H2 } from './shared';
 import './layout.css';
 
 const HowWeWorkImage = styled.img`
@@ -31,7 +31,7 @@ const StepTitle = styled.h3`
     border: ${(props) => (props.isActive ? '4px solid #E8C81D' : '4px solid #C4C4C4')};
     border-radius: 50%;
     background: #fff;
-    transition: background 0.6s ease-out;
+    transition: border 0.4s ease-in;
 
     @media only screen and (max-width: 600px) {
       top: 2.5rem;
@@ -41,14 +41,6 @@ const StepTitle = styled.h3`
   @media only screen and (max-width: 600px) {
     margin-top: 1.5rem;
     line-height: 32px;
-  }
-`;
-
-const StepDescription = styled.p`
-  font-size: 1rem;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 0.75rem;
   }
 `;
 
@@ -93,6 +85,7 @@ const ImageWrapper = styled.div`
 `;
 
 const StepsWrapper = styled.div`
+  width: 60%;
   padding: 0 3rem 4rem 3rem;
 
   @media only screen and (max-width: 768px) {
@@ -225,10 +218,10 @@ const HowWeWork = () => {
           <H2 style={{ marginTop: '2rem' }}>jak pracujeme</H2>
           {stepsData.map((step, index) => (
             <StepWrapper key={step.title}>
-              <Line isActive={currentStepIndex === index} />
+              <Line isActive={index <= currentStepIndex} />
               <StepInfoWrapper>
-                <StepTitle isActive={currentStepIndex === index}>{step.title}</StepTitle>
-                <StepDescription>{step.description}</StepDescription>
+                <StepTitle isActive={index <= currentStepIndex}>{step.title}</StepTitle>
+                <Description>{step.description}</Description>
               </StepInfoWrapper>
             </StepWrapper>
           ))}

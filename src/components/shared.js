@@ -32,8 +32,21 @@ export const ItemsWrapper = styled.div`
 
 export const SectionWithSpaceAround = styled.div`
   padding: 0 3rem;
+  animation-name: ${(props) => props.animation};
+  animation-duration: 2000ms;
 
   @media only screen and (max-width: 600px) {
     padding: 0 0.75rem;
+    animation-name: ${(props) => props.mobileAnimation || props.animation};
+  }
+`;
+
+export const Description = styled.p`
+  font-size: 1.25rem;
+  line-height: 1.5rem;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 0.75rem;
+    line-height: 1rem;
   }
 `;

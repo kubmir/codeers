@@ -1,5 +1,5 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { useInView } from 'react-intersection-observer';
 
 import android from '../svg/new/tech/tech-1.svg';
@@ -10,6 +10,7 @@ import reactivex from '../svg/new/tech/tech-5.svg';
 import firebase from '../svg/new/tech/tech-6.svg';
 import flutter from '../svg/new/tech/tech-7.svg';
 import { H2 } from './shared';
+import { fadeIn } from '../css/animations';
 
 const TechnologiesWrapper = styled.div`
   display: flex;
@@ -25,11 +26,6 @@ const TechnologiesWrapper = styled.div`
   }
 `;
 
-const technologyFadeIn = keyframes`
-  0% {opacity:0;}
-  100% {opacity:1;}
-`;
-
 const Technology = styled.div`
   display: flex;
   align-items: center;
@@ -38,7 +34,7 @@ const Technology = styled.div`
 `;
 
 const TechnologyImage = styled.img`
-  animation-name: ${props => props.inView ? technologyFadeIn : ''};
+  animation-name: ${(props) => (props.inView ? fadeIn : '')};
   animation-duration: 3000ms;
 `;
 

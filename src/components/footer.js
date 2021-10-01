@@ -13,7 +13,7 @@ const FooterWrapper = styled.div`
 
 const CopyrightMessage = styled.p`
   color: #1c1b17;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 700;
 `;
 

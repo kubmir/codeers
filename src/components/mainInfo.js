@@ -1,5 +1,6 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { fadeIn } from '../css/animations';
 import titleImage from '../svg/new/top.png';
 
 import './layout.css';
@@ -13,6 +14,8 @@ const MainHeading = styled.h1`
   line-height: 86px;
   text-transform: uppercase;
   margin-left: 10%;
+  animation-name: ${fadeIn};
+  animation-duration: 4000ms;
 
   @media only screen and (max-width: 600px) {
     font-size: 32px;

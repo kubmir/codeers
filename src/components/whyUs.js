@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import whyUsImage from '../svg/new/why.png';
 
-import { H2 } from './shared';
+import { Description, H2 } from './shared';
 import './layout.css';
 
 const ReasonImage = styled.img`
@@ -15,24 +15,13 @@ const ReasonImage = styled.img`
   z-index: -1;
 `;
 
-const ReasonTitle = styled.p`
-  font-size: 1.5rem;
+const ReasonTitle = styled.h3`
   margin-top: 2rem;
-  line-height: 46px;
+  line-height: 2.5rem;
   font-weight: 700;
 
   @media only screen and (max-width: 600px) {
-    font-size: 1rem;
     margin-top: 1.5rem;
-    line-height: 32px;
-  }
-`;
-
-const ReasonDescription = styled.p`
-  font-size: 1rem;
-
-  @media only screen and (max-width: 600px) {
-    font-size: 0.75rem;
   }
 `;
 
@@ -76,7 +65,7 @@ const MobileWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
-  width: 40%;
+  width: 55%;
 
   @media only screen and (max-width: 768px) {
     display: none;
@@ -84,7 +73,7 @@ const ImageWrapper = styled.div`
 `;
 
 const ReasonsWrapper = styled.div`
-  width: 60%;
+  width: 45%;
   padding: 0 3rem 4rem 3rem;
 
   @media only screen and (max-width: 768px) {
@@ -122,7 +111,7 @@ const WhyUs = () => (
         {whyUsData.map((step) => (
           <div key={step.title}>
             <ReasonTitle>{step.title}</ReasonTitle>
-            <ReasonDescription>{step.description}</ReasonDescription>
+            <Description>{step.description}</Description>
           </div>
         ))}
       </ReasonsWrapper>
