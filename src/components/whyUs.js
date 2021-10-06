@@ -24,6 +24,7 @@ const ReasonTitle = styled.h3`
 
   @media only screen and (max-width: 600px) {
     margin-top: 1.5rem;
+    line-height: 1.5rem;
   }
 `;
 
@@ -57,7 +58,7 @@ const MainReasonInfo = styled.p`
   font-size: 1.5rem;
   font-weight: 700;
   margin: 10vh 0;
-  line-height: 2.5rem;
+  line-height: 2rem;
 `;
 
 const MobileWrapper = styled.div`

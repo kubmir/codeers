@@ -43,7 +43,7 @@ const TechnologyImage = styled.img`
 const techonologies = [android, ios, kotlin, swift, reactivex, firebase, flutter];
 
 const TechnologyItem = ({ technology }) => {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
     <Technology ref={ref}>

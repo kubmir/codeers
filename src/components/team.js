@@ -83,7 +83,7 @@ const getTeamMembers = (t) => [
 ];
 
 const TeamMember = ({ member }) => {
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
     <Member key={member.name} ref={ref} isVisible={inView}>

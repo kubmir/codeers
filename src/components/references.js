@@ -6,7 +6,7 @@ import styled from 'styled-components';
 
 import { moveFromLeft, moveFromRight } from '../css/animations';
 import mm from '../svg/new/mm.png';
-import notino from '../svg/new/notino.jpg';
+import notino from '../svg/new/notino.png';
 
 import { Description, H2, SectionWithSpaceAround } from './shared';
 
@@ -81,7 +81,7 @@ const ReferenceContainer = styled.div`
 
 const NotinoReference = () => {
   const { t } = useTranslation();
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
     <ReferenceContainer ref={ref} withDesktopBackground={true} reverseMobileOrder={true}>
@@ -100,7 +100,7 @@ const NotinoReference = () => {
 
 const MMReference = () => {
   const { t } = useTranslation();
-  const { ref, inView } = useInView();
+  const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
     <ReferenceContainer ref={ref} withTopPadding={true}>

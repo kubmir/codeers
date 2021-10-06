@@ -42,7 +42,7 @@ const StepTitle = styled.h3`
 
   @media only screen and (max-width: 600px) {
     margin-top: 1.5rem;
-    line-height: 32px;
+    line-height: 1.5rem;
   }
 `;
 
@@ -100,6 +100,7 @@ const StepsWrapper = styled.div`
 
 const Line = styled.div`
   margin-top: 3.25rem;
+  margin-left: 0.375rem;
   width: 4px;
   background: ${(props) => (props.isActive ? '#E8C81D' : '#C4C4C4')};
   transition: background 0.4s ease-in;

@@ -115,7 +115,7 @@ export const ContactForm = () => {
           value={contactFormData.project}
         />
       </TextAreaWrapper>
-      <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů')}</GdprInfoWrapper>
+      <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>
       <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
     </ContactWrapper>
   );

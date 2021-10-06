@@ -21,12 +21,13 @@ const MainHeading = styled.h1`
   animation-duration: 4000ms;
 
   @media only screen and (max-width: 600px) {
-    font-size: 32px;
-    line-height: 42px;
+    font-size: 2rem;
+    line-height: 2.5rem;
   }
 
   @media only screen and (max-width: 330px) {
-    margin-top: 32px;
+    font-size: 1.75rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -38,7 +39,12 @@ const Wrapper = styled.div`
 `;
 
 const SmallHeading = styled.span`
-  font-size: 32px;
+  font-size: 2rem;
+
+  @media only screen and (max-width: 600px) {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
 `;
 
 const HeadingWrapper = styled.div`

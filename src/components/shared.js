@@ -6,7 +6,8 @@ export const FlexContainer = styled.div`
 `;
 
 export const H2 = styled.h2`
-  font-size: 32px;
+  font-size: 2rem;
+  line-height: 2.25rem;
   font-weight: 700;
   margin-top: 160px;
   text-transform: uppercase;
