@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 import howWeWorkImage from '../svg/new/how.png';
+import howWeWorkImageMobile from '../svg/new/how_mobile.png';
 
 import { Description, H2 } from './shared';
 import './layout.css';
@@ -63,8 +64,8 @@ const HowWeWorkWrapper = styled.div`
       top: 100px;
       width: 100%;
       height: calc(100vh - 100px);
-      opacity: 0.1;
-      background-image: url(${howWeWorkImage});
+      opacity: 1;
+      background-image: url(${howWeWorkImageMobile});
       background-repeat: no-repeat;
       background-size: cover;
       z-index: -10;
