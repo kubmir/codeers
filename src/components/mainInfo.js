@@ -16,7 +16,7 @@ const MainHeading = styled.h1`
   font-weight: 400;
   line-height: 86px;
   text-transform: uppercase;
-  margin-left: 10%;
+  margin-left: 4rem;
   animation-name: ${fadeIn};
   animation-duration: 4000ms;
 

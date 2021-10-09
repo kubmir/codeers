@@ -41,9 +41,9 @@ const HeaderWrapper = styled.div`
   top: 0;
   z-index: 99;
   padding: 0 3.5rem;
-  max-width: 1480px;
+  max-width: 1035px;
 
-  @media only screen and (min-width: 1480px) {
+  @media only screen and (min-width: 1035px) {
     padding: 0;
   }
 
