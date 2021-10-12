@@ -13,8 +13,8 @@ import { Description, H2, SectionWithSpaceAround } from './shared';
 import './layout.css';
 
 const ReferenceImage = styled.img`
-  width: 60%;
-  max-height: 32rem;
+  max-width: 500px;
+  max-height: 320px;
   animation-name: ${(props) => props.animation};
   animation-duration: 2000ms;
 
@@ -40,7 +40,7 @@ const ReferenceDescription = styled(Description)`
 const LeftReferenceInfoWrapper = styled.div`
   position: relative;
   display: flex;
-  width: 40%;
+  width: calc(100% - 500px);
   animation-name: ${(props) => props.animation};
   animation-duration: 2000ms;
 
@@ -51,10 +51,10 @@ const LeftReferenceInfoWrapper = styled.div`
 
 const TextWrapper = styled.div`
   position: absolute;
-  top: 50%;
+  top: 30%;
   height: 100%;
   width: 120%;
-  margin-left: 100px;
+  margin-left: 3rem;
 
   @media only screen and (max-width: 600px) {
     position: relative;

@@ -89,11 +89,13 @@ const ImageWrapper = styled.div`
 
 const StepsWrapper = styled.div`
   width: 60%;
-  padding: 0 3rem 4rem 3rem;
+  padding: 0 3rem 4rem 0;
+  padding-left: 15%;
 
   @media only screen and (max-width: 768px) {
     /* Ugly way to enforce right positioning of text over sticky image */
     margin-top: calc((100vh - 100px) * (-1));
+    margin-bottom: 2rem;
     width: calc(100% - 2rem);
     padding: 0 1rem;
   }

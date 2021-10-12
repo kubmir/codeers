@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { graphql } from 'gatsby';
 
+import styled from 'styled-components';
+
 import { ContactForm } from '../components/contactForm/contactForm';
 import { Footer } from '../components/footer';
 import { Layout } from '../components/layout';
@@ -13,21 +15,28 @@ import { SectionWithSpaceAround } from '../components/shared';
 import { Team } from '../components/team';
 import { HowWeWork } from '../components/howWeWork';
 
+const MainContentWrapper = styled.div`
+  max-width: 1035px;
+  margin: 0 auto;
+`;
+
 const IndexPage = () => (
   <Layout>
     <Seo />
     <MainInfo />
-    <WhyUs />
-    <References />
-    <SectionWithSpaceAround>
-      <Technologies />
-    </SectionWithSpaceAround>
-    <HowWeWork />
-    <SectionWithSpaceAround>
-      <Team />
-      <ContactForm />
-    </SectionWithSpaceAround>
-    <Footer />
+    <MainContentWrapper>
+      <WhyUs />
+      <References />
+      <SectionWithSpaceAround>
+        <Technologies />
+      </SectionWithSpaceAround>
+      <HowWeWork />
+      <SectionWithSpaceAround>
+        <Team />
+        <ContactForm />
+      </SectionWithSpaceAround>
+      <Footer />
+    </MainContentWrapper>
   </Layout>
 );
 

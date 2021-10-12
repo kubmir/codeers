@@ -19,7 +19,7 @@ const ReasonImage = styled.img`
 
 const ReasonTitle = styled.h3`
   margin-top: 2rem;
-  line-height: 2.5rem;
+  line-height: 2.25rem;
   font-weight: 700;
 
   @media only screen and (max-width: 600px) {
@@ -54,13 +54,6 @@ const WhyUsWrapper = styled.div`
   }
 `;
 
-const MainReasonInfo = styled.p`
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin: 10vh 0;
-  line-height: 2rem;
-`;
-
 const MobileWrapper = styled.div`
   @media only screen and (max-width: 768px) {
     position: relative;
@@ -82,6 +75,7 @@ const ReasonsWrapper = styled.div`
   @media only screen and (max-width: 768px) {
     /* Ugly way to enforce right positioning of text over sticky image */
     margin-top: calc((100vh - 100px) * (-1));
+    margin-bottom: 2rem;
     width: calc(100% - 2rem);
     padding: 0 1rem;
   }
@@ -89,21 +83,33 @@ const ReasonsWrapper = styled.div`
 
 const getWhyUsData = (t) => [
   {
+    title: t('sme zkušený a sehraný tým vývojářů a designérů'),
+    description: t(
+      'Díky tomu máme dobře zavedené procesy a fungující tým. Věříme, že dobře vyvinutá a navržená aplikace může lidem pomoci ve všech oblastech podnikání či každodenního života.',
+    ),
+  },
+  {
+    title: t('specializujeme se na mobilní aplikace'),
+    description: t(
+      'Naší filozofií je být nejlepší v jedné konkrétní oblasti. Proto se specializujeme na mobilní aplikace. Nic jiného neděláme. Díky tomu máme unikátní zkušenosti a výsledky v oblasti e-commerce, omnichannel i maloobchodu.',
+    ),
+  },
+  {
     title: t('tvoříme nová řešení od zadání po nasazení'),
     description: t(
-      'Máte nápad, ale nemáte prostor či dovednosti na jeho realizaci? Provedeme vás celým procesem - od zadání, přes implementaci, až po nasazení a provoz aplikace.',
+      'Jakýkoliv nápad stojí za zmínku a analýzu. Pokud ale nemáte prostor či dovednosti na jeho realizaci, rádi vás provedeme celým procesem - od zadání, přes implementaci, až po nasazení a provoz aplikace.',
     ),
   },
   {
     title: t('vylepšíme váš současný produkt'),
     description: t(
-      'Máte hotovou či rozpracovanou aplikaci, ale nenaplňuje funkčností či designem očekávání? Provedeme analýzu stávajícího řešení, navrhneme, jak jej dostat na vyšší úroveň a postaráme se o implementaci.',
+      'Na každé aplikaci je co vylepšit. Pokud máte hotovou či rozpracovanou aplikaci, ale nenaplňuje funkčností či designem vaše očekávání, provedeme analýzu stávajícího řešení a navrhneme, jak jej dostat na vyšší úroveň.',
     ),
   },
   {
     title: t('pomůžeme vašemu týmu'),
     description: t(
-      'Jste ve slepé uličce a nevíte si rady s vývojem aplikace? Chybí vám znalosti a zkušenosti? Ocenili byste pomoc s definicí zadání či organizací práce? Dokážeme vaše projekty a procesy dát zase do chodu a pomoci vám s růstem.',
+      'Pokud jste se ocitli ve slepé uličce a ocenili byste pomoc s definicí zadání či organizací práce vašeho týmu, dokážeme vaše projekty a procesy dát zase do chodu a pomoci vám s růstem.',
     ),
   },
 ];
@@ -116,9 +122,6 @@ export const WhyUs = () => {
       <WhyUsWrapper>
         <ReasonsWrapper>
           <H2 style={{ marginTop: '2rem' }}>{t('proč zvolit codeers')}</H2>
-          <MainReasonInfo>
-            {t('Jsme zkušený tým vývojářů a designérů. Specializuje se na mobilní aplikace.')}
-          </MainReasonInfo>
           {getWhyUsData(t).map((step) => (
             <div key={step.title}>
               <ReasonTitle>{step.title}</ReasonTitle>

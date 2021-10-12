@@ -32,23 +32,29 @@ const Logo = styled.img`
   }
 `;
 
+const HeaderBackgroundWrapper = styled.div`
+  position: sticky;
+  background-color: white;
+  top: 0;
+  z-index: 100;
+`;
+
 const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: sticky;
-  background-color: white;
-  top: 0;
-  z-index: 99;
   padding: 0 3.5rem;
-  max-width: 1035px;
+  width: calc(100% - 7rem);
+  margin: 0 auto;
 
   @media only screen and (min-width: 1035px) {
+    width: 1035px;
     padding: 0;
   }
 
   @media only screen and (max-width: 600px) {
     padding: 0 1.5rem;
+    width: calc(100% - 3rem);
   }
 `;
 
@@ -69,6 +75,7 @@ export const Layout = ({ children }) => {
 
   return (
     <>
+      <HeaderBackgroundWrapper>
         <HeaderWrapper>
           <a href="https://codeers.cz" title="Codeers">
             <LogoWrapper>
@@ -78,6 +85,7 @@ export const Layout = ({ children }) => {
           <ContactLink href="#contactForm">{t('Kontakt')}</ContactLink>
           <LanguageSwitcher />
         </HeaderWrapper>
+      </HeaderBackgroundWrapper>
 
       <main>{children}</main>
     </>
