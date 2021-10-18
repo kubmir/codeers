@@ -25,11 +25,11 @@ const ReferenceImage = styled.img`
 `;
 
 const ReferenceTitle = styled.p`
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 500;
 
   @media only screen and (max-width: 600px) {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
   }
 `;
 

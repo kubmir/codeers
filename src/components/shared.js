@@ -6,8 +6,7 @@ export const FlexContainer = styled.div`
 `;
 
 export const H2 = styled.h2`
-  font-size: 2rem;
-  line-height: 2.25rem;
+  font-size: 1rem;
   font-weight: 700;
   margin-top: 160px;
   text-transform: uppercase;
@@ -44,11 +43,9 @@ export const SectionWithSpaceAround = styled.div`
 `;
 
 export const Description = styled.p`
-  font-size: 1.25rem;
-  line-height: 1.5rem;
+  font-size: 1rem;
 
   @media only screen and (max-width: 600px) {
     font-size: 0.75rem;
-    line-height: 1rem;
   }
 `;

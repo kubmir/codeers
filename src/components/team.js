@@ -39,13 +39,13 @@ const Member = styled.div`
 `;
 
 const MemberName = styled.p`
-  font-size: 2rem;
+  font-size: 1.25rem;
   font-weight: 700;
   margin-top: 0;
   margin-bottom: 1rem;
 
   @media only screen and (max-width: 600px) {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin-bottom: 0.75rem;
   }
 `;

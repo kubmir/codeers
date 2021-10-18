@@ -19,12 +19,10 @@ const ReasonImage = styled.img`
 
 const ReasonTitle = styled.h3`
   margin-top: 2rem;
-  line-height: 2.25rem;
-  font-weight: 700;
+  font-weight: 400;
 
   @media only screen and (max-width: 600px) {
     margin-top: 1.5rem;
-    line-height: 1.5rem;
   }
 `;
 

@@ -19,8 +19,7 @@ const HowWeWorkImage = styled.img`
 
 const StepTitle = styled.h3`
   margin-top: 2rem;
-  line-height: 2.5rem;
-  font-weight: 700;
+  font-weight: 400;
 
   &:before {
     content: '';
@@ -43,7 +42,6 @@ const StepTitle = styled.h3`
 
   @media only screen and (max-width: 600px) {
     margin-top: 1.5rem;
-    line-height: 1.5rem;
   }
 `;
 
