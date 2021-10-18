@@ -14,6 +14,7 @@ import {
   GdprInfoWrapper,
   ContactWrapper,
   SuccessMessage,
+  FormWrapper,
 } from './styled';
 
 import './styles.css';
@@ -63,65 +64,69 @@ export const ContactForm = () => {
   return (
     <ContactWrapper id="contactForm">
       <H2 style={{ marginTop: 0 }}>{t('kontaktujte nás')}</H2>
-      <ContactFormWrapper>
-        <TextField
-          id="name"
-          label={t('Jméno')}
-          variant="outlined"
-          helperText={submitClicked && !contactFormData.name ? t('Povinný údaj') : ''}
-          onChange={onChange}
-          value={contactFormData.name}
-          error={submitClicked && !contactFormData.name}
-          size="small"
-        />
-        <TextField
-          id="email"
-          label={t('E-mail')}
-          variant="outlined"
-          helperText={submitClicked && !contactFormData.email ? t('Povinný údaj') : ''}
-          onChange={onChange}
-          value={contactFormData.email}
-          error={submitClicked && !contactFormData.email}
-          size="small"
-        />
-        <TextField
-          id="phone"
-          label={t('Telefon (nepovinně)')}
-          type="tel"
-          variant="outlined"
-          onChange={onChange}
-          value={contactFormData.phone}
-          error={submitClicked && contactFormData.phone && isPhoneInvalid}
-          helperText={
-            submitClicked && contactFormData.phone && isPhoneInvalid ? t('Zadejte validní telefonní číslo') : ''
-          }
-          size="small"
-        />
-        <TextField
-          id="company"
-          label={t('Společnost (nepovinně)')}
-          variant="outlined"
-          onChange={onChange}
-          value={contactFormData.company}
-          size="small"
-        />
-      </ContactFormWrapper>
-      <TextAreaWrapper>
-        <TextField
-          id="project"
-          label={t('Stručně popište svůj projekt (nepovinně)')}
-          multiline
-          minRows={8}
-          maxRows={10}
-          variant="outlined"
-          fullWidth={true}
-          onChange={onChange}
-          value={contactFormData.project}
-          size="small"
-        />
-      </TextAreaWrapper>
-      <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>
-      <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
+      <div style={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
+        <FormWrapper>
+          <ContactFormWrapper>
+            <TextField
+              id="name"
+              label={t('Jméno')}
+              variant="outlined"
+              helperText={submitClicked && !contactFormData.name ? t('Povinný údaj') : ''}
+              onChange={onChange}
+              value={contactFormData.name}
+              error={submitClicked && !contactFormData.name}
+              size="small"
+            />
+            <TextField
+              id="email"
+              label={t('E-mail')}
+              variant="outlined"
+              helperText={submitClicked && !contactFormData.email ? t('Povinný údaj') : ''}
+              onChange={onChange}
+              value={contactFormData.email}
+              error={submitClicked && !contactFormData.email}
+              size="small"
+            />
+            <TextField
+              id="phone"
+              label={t('Telefon (nepovinně)')}
+              type="tel"
+              variant="outlined"
+              onChange={onChange}
+              value={contactFormData.phone}
+              error={submitClicked && contactFormData.phone && isPhoneInvalid}
+              helperText={
+                submitClicked && contactFormData.phone && isPhoneInvalid ? t('Zadejte validní telefonní číslo') : ''
+              }
+              size="small"
+            />
+            <TextField
+              id="company"
+              label={t('Společnost (nepovinně)')}
+              variant="outlined"
+              onChange={onChange}
+              value={contactFormData.company}
+              size="small"
+            />
+          </ContactFormWrapper>
+          <TextAreaWrapper>
+            <TextField
+              id="project"
+              label={t('Stručně popište svůj projekt (nepovinně)')}
+              multiline
+              minRows={8}
+              maxRows={10}
+              variant="outlined"
+              fullWidth={true}
+              onChange={onChange}
+              value={contactFormData.project}
+              size="small"
+            />
+          </TextAreaWrapper>
+          <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>
+          <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
+        </FormWrapper>
+      </div>
     </ContactWrapper>
   );
 };

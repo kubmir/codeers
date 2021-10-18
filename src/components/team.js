@@ -8,6 +8,9 @@ import { fadeIn } from '../css/animations';
 import michal from '../svg/new/faces/michal.png';
 import rado from '../svg/new/faces/rado.png';
 import sarka from '../svg/new/faces/sarka.png';
+import petra from '../svg/new/faces/petra.png';
+import franta from '../svg/new/faces/franta.jpeg';
+import tomas from '../svg/new/faces/tomas.png';
 
 import { Description, H2 } from './shared';
 
@@ -77,9 +80,19 @@ const getTeamMembers = (t) => [
     description: t('Scrum Master'),
   },
   {
-    image: sarka,
-    name: 'Šárka',
-    description: t('Scrum Master'),
+    image: petra,
+    name: 'Petra',
+    description: t('UX Research'),
+  },
+  {
+    image: franta,
+    name: 'Franta',
+    description: t('Developer'),
+  },
+  {
+    image: tomas,
+    name: 'Tomáš',
+    description: t('UI Designer'),
   },
 ];
 

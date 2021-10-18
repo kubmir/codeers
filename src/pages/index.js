@@ -16,7 +16,7 @@ import { Team } from '../components/team';
 import { HowWeWork } from '../components/howWeWork';
 
 const MainContentWrapper = styled.div`
-  max-width: 1035px;
+  max-width: 1440px;
   margin: 0 auto;
 `;
 

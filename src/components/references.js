@@ -13,13 +13,13 @@ import { Description, H2, SectionWithSpaceAround } from './shared';
 import './layout.css';
 
 const ReferenceImage = styled.img`
-  max-width: 500px;
-  max-height: 320px;
+  max-width: 50%;
   animation-name: ${(props) => props.animation};
   animation-duration: 2000ms;
 
   @media only screen and (max-width: 600px) {
     width: 100%;
+    max-width: 100%;
     animation-name: ${(props) => props.mobileAnimation || props.animation};
   }
 `;
@@ -51,7 +51,7 @@ const LeftReferenceInfoWrapper = styled.div`
 
 const TextWrapper = styled.div`
   position: absolute;
-  top: 30%;
+  top: 40%;
   height: 100%;
   width: 120%;
   margin-left: 3rem;
@@ -69,6 +69,7 @@ const ReferenceContainer = styled.div`
   padding-top: ${(props) => (props.withTopPadding ? '2rem' : '0')};
   background-color: ${(props) => (props.withDesktopBackground ? '#F7F7F7' : 'transparent')};
   overflow: hidden;
+  height: 450px;
 
   @media only screen and (max-width: 600px) {
     padding: 0 1rem;
@@ -76,6 +77,7 @@ const ReferenceContainer = styled.div`
     flex-direction: ${(props) => (props.reverseMobileOrder ? 'column' : 'column-reverse')};
     background-color: #f7f7f7;
     padding-top: ${(props) => (props.withTopPadding ? '1rem' : '0')};
+    height: auto;
   }
 `;
 

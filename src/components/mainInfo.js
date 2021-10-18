@@ -12,9 +12,9 @@ const MainHeading = styled.h1`
   position: absolute;
   bottom: 50px;
   color: white;
-  font-size: 64px;
+  font-size: 48px;
   font-weight: 400;
-  line-height: 86px;
+  line-height: 64px;
   text-transform: uppercase;
   animation-name: ${fadeIn};
   animation-duration: 4000ms;
@@ -30,7 +30,7 @@ const MainHeading = styled.h1`
     margin-top: 1rem;
   }
 
-  @media only screen and (min-width: 1035px) {
+  @media only screen and (min-width: 1440px) {
     margin-left: 0;
   }
 `;
@@ -48,14 +48,14 @@ const Wrapper = styled.div`
   width: 100%;
   margin: 0 auto;
 
-  @media only screen and (min-width: 1035px) {
-    width: 1035px;
+  @media only screen and (min-width: 1440px) {
+    width: calc(1440px - 7rem);
     padding: 0;
   }
 `;
 
 const SmallHeading = styled.span`
-  font-size: 2rem;
+  font-size: 1.5rem;
 
   @media only screen and (max-width: 600px) {
     font-size: 1rem;

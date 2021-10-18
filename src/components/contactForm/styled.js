@@ -58,4 +58,13 @@ export const SuccessMessage = styled.p`
 
 export const ContactWrapper = styled.div`
   padding-top: 130px;
+  margin: 0 auto;
+`;
+
+export const FormWrapper = styled.div`
+  width: 920px;
+
+  @media only screen and (max-width: 600px) {
+    width: 100%;
+  }
 `;

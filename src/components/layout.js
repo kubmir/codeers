@@ -47,9 +47,9 @@ const HeaderWrapper = styled.div`
   width: calc(100% - 7rem);
   margin: 0 auto;
 
-  @media only screen and (min-width: 1035px) {
-    width: 1035px;
-    padding: 0;
+  @media only screen and (min-width: 1440px) {
+    width: calc(1440px - 7rem);
+    padding: 0 3.5rem;
   }
 
   @media only screen and (max-width: 600px) {
