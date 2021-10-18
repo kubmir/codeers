@@ -4,7 +4,7 @@ import { useInView } from 'react-intersection-observer';
 
 import styled from 'styled-components';
 
-import { moveFromLeft, moveFromRight } from '../css/animations';
+import { fadeIn } from '../css/animations';
 import mm from '../svg/new/mm.png';
 import notino from '../svg/new/notino.png';
 
@@ -85,7 +85,7 @@ const NotinoReference = () => {
 
   return (
     <ReferenceContainer ref={ref} withDesktopBackground={true} reverseMobileOrder={true}>
-      <LeftReferenceInfoWrapper animation={inView ? moveFromLeft : ''}>
+      <LeftReferenceInfoWrapper animation={inView ? fadeIn : ''}>
         <TextWrapper>
           <ReferenceTitle>{t('Notino - parfémy a kosmetika')}</ReferenceTitle>
           <ReferenceDescription>
@@ -93,7 +93,7 @@ const NotinoReference = () => {
           </ReferenceDescription>
         </TextWrapper>
       </LeftReferenceInfoWrapper>
-      <ReferenceImage src={notino} animation={inView ? moveFromRight : ''} />
+      <ReferenceImage src={notino} animation={inView ? fadeIn : ''} />
     </ReferenceContainer>
   );
 };
@@ -104,8 +104,8 @@ const MMReference = () => {
 
   return (
     <ReferenceContainer ref={ref} withTopPadding={true}>
-      <ReferenceImage src={mm} animation={inView ? moveFromLeft : ''} mobileAnimation={inView ? moveFromRight : ''} />
-      <SectionWithSpaceAround animation={inView ? moveFromRight : ''} mobileAnimation={inView ? moveFromLeft : ''}>
+      <ReferenceImage src={mm} animation={inView ? fadeIn : ''} mobileAnimation={inView ? fadeIn : ''} />
+      <SectionWithSpaceAround animation={inView ? fadeIn : ''} mobileAnimation={inView ? fadeIn : ''}>
         <ReferenceTitle>{t('M&M - Statistiky')}</ReferenceTitle>
         <ReferenceDescription>
           {t('Statistiky prodeje nemovitostí určené pro vedení společnosti a makléře.')}
