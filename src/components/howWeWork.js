@@ -24,13 +24,13 @@ const StepTitle = styled.h3`
   &:before {
     content: '';
     position: absolute;
-    top: 3.25rem;
-    left: calc(-2.5rem - 5px);
+    top: 2.75rem;
+    left: calc(-2.5rem - 2px);
     -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
     width: 16px;
     height: 16px;
-    border: ${(props) => (props.isActive ? '4px solid #E8C81D' : '4px solid #C4C4C4')};
+    border: ${(props) => (props.isActive ? '2px solid #E8C81D' : '2px solid #C4C4C4')};
     border-radius: 50%;
     background: #fff;
     transition: border 0.4s ease-in;
@@ -102,7 +102,7 @@ const StepsWrapper = styled.div`
 const Line = styled.div`
   margin-top: 3.25rem;
   margin-left: 0.375rem;
-  width: 4px;
+  width: 2px;
   background: ${(props) => (props.isActive ? '#E8C81D' : '#C4C4C4')};
   transition: background 0.4s ease-in;
 
