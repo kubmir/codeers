@@ -13,45 +13,38 @@ import { Description, H2 } from './shared';
 
 const MembersWrapper = styled.div`
   display: grid;
-  grid-template-columns: 50% 50%;
+  grid-template-columns: 25% 25% 25% 25%;
   grid-row: auto auto;
   grid-column-gap: 10px;
   grid-row-gap: 2rem;
 
   @media only screen and (max-width: 600px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    grid-template-columns: 50% 50%;
   }
 `;
 
 const Member = styled.div`
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   animation-name: ${(props) => (props.isVisible ? fadeIn : '')};
   animation-duration: 2000ms;
-
-  @media only screen and (max-width: 600px) {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
 `;
 
 const MemberName = styled.p`
   font-size: 1.25rem;
   font-weight: 700;
-  margin-top: 0;
-  margin-bottom: 1rem;
+  margin: 0;
 
   @media only screen and (max-width: 600px) {
     font-size: 1rem;
-    margin-bottom: 0.75rem;
   }
 `;
 
 const MemberTextWrapper = styled.div`
   padding: 0 1.5rem;
+  text-align: center;
 
   @media only screen and (max-width: 600px) {
     padding: 0 1rem;
@@ -59,26 +52,34 @@ const MemberTextWrapper = styled.div`
 `;
 
 const MemberImage = styled.img`
-  @media only screen and (max-width: 600px) {
-    width: 25%;
-  }
+  height: 130px;
 `;
+
+const MemberDescription = styled(Description)`
+  margin: 0;
+`;
+
 
 const getTeamMembers = (t) => [
   {
     image: michal,
     name: 'Michal',
-    description: t('Postará se o to, aby vaše aplikace byla vždy technicky mezi špičkou a podle posledních trendů.'),
+    description: t('Developer'),
   },
   {
     image: rado,
     name: 'Radovan',
-    description: t('Díky němu bude vaše aplikace dělat to co má a užívatelé ji budou zbožňovat.'),
+    description: t('Product Manager'),
   },
   {
     image: sarka,
     name: 'Šárka',
-    description: t('Odřídí a odkomunikuje celý projekt od jeho začátku až ke zdárnému konci.'),
+    description: t('Scrum Master'),
+  },
+  {
+    image: sarka,
+    name: 'Šárka',
+    description: t('Scrum Master'),
   },
 ];
 
@@ -90,7 +91,7 @@ const TeamMember = ({ member }) => {
       <MemberImage alt={member.name} src={member.image} />
       <MemberTextWrapper>
         <MemberName>{member.name}</MemberName>
-        <Description>{member.description}</Description>
+        <MemberDescription>{member.description}</MemberDescription>
       </MemberTextWrapper>
     </Member>
   );

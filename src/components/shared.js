@@ -14,7 +14,7 @@ export const H2 = styled.h2`
 
   @media only screen and (max-width: 600px) {
     margin-top: 120px;
-    font-size: 1.5rem;
+    font-size: 1rem;
   }
 `;
 

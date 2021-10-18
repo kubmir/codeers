@@ -36,6 +36,8 @@ const Technology = styled.div`
 `;
 
 const TechnologyImage = styled.img`
+  width: 60px;
+  height: 60px;
   animation-name: ${(props) => (props.inView ? fadeIn : '')};
   animation-duration: 3000ms;
 `;
