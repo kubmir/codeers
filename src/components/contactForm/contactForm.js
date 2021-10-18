@@ -72,6 +72,7 @@ export const ContactForm = () => {
           onChange={onChange}
           value={contactFormData.name}
           error={submitClicked && !contactFormData.name}
+          size="small"
         />
         <TextField
           id="email"
@@ -81,6 +82,7 @@ export const ContactForm = () => {
           onChange={onChange}
           value={contactFormData.email}
           error={submitClicked && !contactFormData.email}
+          size="small"
         />
         <TextField
           id="phone"
@@ -93,6 +95,7 @@ export const ContactForm = () => {
           helperText={
             submitClicked && contactFormData.phone && isPhoneInvalid ? t('Zadejte validní telefonní číslo') : ''
           }
+          size="small"
         />
         <TextField
           id="company"
@@ -100,6 +103,7 @@ export const ContactForm = () => {
           variant="outlined"
           onChange={onChange}
           value={contactFormData.company}
+          size="small"
         />
       </ContactFormWrapper>
       <TextAreaWrapper>
@@ -113,6 +117,7 @@ export const ContactForm = () => {
           fullWidth={true}
           onChange={onChange}
           value={contactFormData.project}
+          size="small"
         />
       </TextAreaWrapper>
       <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>

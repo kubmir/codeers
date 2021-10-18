@@ -40,7 +40,8 @@ export const SendButtonWrapper = styled.button`
 
 export const GdprInfoWrapper = styled.p`
   margin: 25px 0;
-  font-size: 20px;
+  font-size: 1rem;
+  color: rgba(0, 0, 0, 0.54);
 
   @media only screen and (max-width: 600px) {
     margin: 30px 0;
