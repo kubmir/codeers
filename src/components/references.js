@@ -86,7 +86,7 @@ const NotinoReference = () => {
   const { ref, inView } = useInView({ triggerOnce: true });
 
   return (
-    <ReferenceContainer ref={ref} withDesktopBackground={true} reverseMobileOrder={true}>
+    <ReferenceContainer ref={ref} withDesktopBackground={false} reverseMobileOrder={true}>
       <LeftReferenceInfoWrapper animation={inView ? fadeIn : ''}>
         <TextWrapper>
           <ReferenceTitle>{t('Notino - parfémy a kosmetika')}</ReferenceTitle>

@@ -8,9 +8,7 @@ import { fadeIn } from '../css/animations';
 import michal from '../svg/new/faces/michal.png';
 import rado from '../svg/new/faces/rado.png';
 import sarka from '../svg/new/faces/sarka.png';
-import petra from '../svg/new/faces/petra.png';
-import franta from '../svg/new/faces/franta.jpeg';
-import tomas from '../svg/new/faces/tomas.png';
+import others from '../svg/new/faces/others.png';
 
 import { Description, H2 } from './shared';
 
@@ -22,15 +20,14 @@ const MembersWrapper = styled.div`
   grid-row-gap: 2rem;
 
   @media only screen and (max-width: 600px) {
-    grid-template-columns: 50% 50%;
+    display: block;
   }
 `;
 
 const Member = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
   animation-name: ${(props) => (props.isVisible ? fadeIn : '')};
   animation-duration: 2000ms;
 `;
@@ -47,7 +44,7 @@ const MemberName = styled.p`
 
 const MemberTextWrapper = styled.div`
   padding: 0 1.5rem;
-  text-align: center;
+  text-align: start;
 
   @media only screen and (max-width: 600px) {
     padding: 0 1rem;
@@ -80,19 +77,9 @@ const getTeamMembers = (t) => [
     description: t('Scrum Master'),
   },
   {
-    image: petra,
-    name: 'Petra',
-    description: t('UX Research'),
-  },
-  {
-    image: franta,
-    name: 'Franta',
-    description: t('Developer'),
-  },
-  {
-    image: tomas,
-    name: 'Tomáš',
-    description: t('UI Designer'),
+    image: others,
+    name: t('a další'),
+    description: '+5',
   },
 ];
 

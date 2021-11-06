@@ -13,7 +13,7 @@ export const H2 = styled.h2`
   margin-bottom: 2.5rem;
 
   @media only screen and (max-width: 600px) {
-    margin-top: 120px;
+    margin-top: 80px;
     font-size: 1rem;
   }
 `;

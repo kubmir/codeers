@@ -3,18 +3,34 @@ import { useTranslation } from 'react-i18next';
 
 import styled from 'styled-components';
 
-import howWeWorkImage from '../svg/new/how.png';
+import howWeWorkImage from '../svg/new/how_we_work_1.png';
+import howWeWorkImageTwo from '../svg/new/how_we_work_2.png';
 import howWeWorkImageMobile from '../svg/new/how_mobile.png';
 
-import { Description, H2 } from './shared';
+import { Description, H2, SectionWithSpaceAround } from './shared';
 import './layout.css';
 
 const HowWeWorkImage = styled.img`
-  position: sticky;
-  top: 120px;
-  right: 0;
-  height: calc(100vh - 120px);
-  z-index: -1;
+  max-height: 200px;
+  max-width: 300px;
+  padding-top: 6rem;
+
+  @media only screen and (min-width: 1600px) {
+    max-width: 450px;
+    max-height: 300px;
+  }
+`;
+
+const HowWeWorkImageTwo = styled.img`
+  max-height: 175px;
+  max-width: 260px;
+  padding-left: 5rem;
+  padding-top: 10%;
+
+  @media only screen and (min-width: 1600px) {
+    max-width: 380px;
+    max-height: 250px;
+  }
 `;
 
 const StepTitle = styled.h3`
@@ -59,9 +75,8 @@ const HowWeWorkWrapper = styled.div`
       display: block;
       position: sticky;
       left: 0;
-      top: 100px;
-      width: 100%;
-      height: calc(100vh - 100px);
+      top: 0;
+      height: 100vh;
       opacity: 1;
       background-image: url(${howWeWorkImageMobile});
       background-repeat: no-repeat;
@@ -78,6 +93,10 @@ const MobileWrapper = styled.div`
 `;
 
 const ImageWrapper = styled.div`
+  position: sticky;
+  top: 0;
+  right: 0;
+  height: 100vh;
   width: 40%;
 
   @media only screen and (max-width: 768px) {
@@ -88,11 +107,10 @@ const ImageWrapper = styled.div`
 const StepsWrapper = styled.div`
   width: 60%;
   padding: 0 3rem 4rem 0;
-  padding-left: 15%;
 
   @media only screen and (max-width: 768px) {
     /* Ugly way to enforce right positioning of text over sticky image */
-    margin-top: calc((100vh - 100px) * (-1));
+    margin-top: calc(100vh * (-1));
     margin-bottom: 2rem;
     width: calc(100% - 2rem);
     padding: 0 1rem;
@@ -119,6 +137,12 @@ const StepInfoWrapper = styled.div`
   margin-left: 2rem;
   width: 70%;
   position: relative;
+`;
+
+const HowWeWorkSectionWrapper = styled(SectionWithSpaceAround)`
+  @media only screen and (max-width: 600px) {
+    padding: 0;
+  }
 `;
 
 const getStepsData = (t) => [
@@ -221,24 +245,27 @@ export const HowWeWork = () => {
   }, [currentStepIndex]);
 
   return (
-    <MobileWrapper>
-      <HowWeWorkWrapper>
-        <ImageWrapper>
-          <HowWeWorkImage src={howWeWorkImage} />
-        </ImageWrapper>
-        <StepsWrapper id="steps">
-          <H2 style={{ marginTop: '2rem' }}>{t('jak pracujeme')}</H2>
-          {getStepsData(t).map((step, index) => (
-            <StepWrapper key={step.title}>
-              <Line isActive={index <= currentStepIndex} />
-              <StepInfoWrapper>
-                <StepTitle isActive={index <= currentStepIndex}>{step.title}</StepTitle>
-                <Description>{step.description}</Description>
-              </StepInfoWrapper>
-            </StepWrapper>
-          ))}
-        </StepsWrapper>
-      </HowWeWorkWrapper>
-    </MobileWrapper>
+    <HowWeWorkSectionWrapper>
+      <MobileWrapper>
+        <HowWeWorkWrapper>
+          <StepsWrapper id="steps">
+            <H2 style={{ marginTop: '2rem' }}>{t('jak pracujeme')}</H2>
+            {getStepsData(t).map((step, index) => (
+              <StepWrapper key={step.title}>
+                <Line isActive={index <= currentStepIndex} />
+                <StepInfoWrapper>
+                  <StepTitle isActive={index <= currentStepIndex}>{step.title}</StepTitle>
+                  <Description>{step.description}</Description>
+                </StepInfoWrapper>
+              </StepWrapper>
+            ))}
+          </StepsWrapper>
+          <ImageWrapper>
+            <HowWeWorkImage src={howWeWorkImage} />
+            <HowWeWorkImageTwo src={howWeWorkImageTwo} />
+          </ImageWrapper>
+        </HowWeWorkWrapper>
+      </MobileWrapper>
+    </HowWeWorkSectionWrapper>
   );
 };
