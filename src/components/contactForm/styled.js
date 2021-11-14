@@ -19,9 +19,8 @@ export const ContactFormWrapper = styled.div`
   grid-row: auto auto;
   grid-column-gap: 20px;
   grid-row-gap: 20px;
-  margin-top: 20px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     grid-template-columns: 100%;
     grid-row: auto;
   }
@@ -43,7 +42,7 @@ export const GdprInfoWrapper = styled.p`
   font-size: 1rem;
   color: rgba(0, 0, 0, 0.54);
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     margin: 30px 0;
     font-size: 16px;
   }
@@ -62,9 +61,32 @@ export const ContactWrapper = styled.div`
 `;
 
 export const FormWrapper = styled.div`
+  display: flex;
+  width: 100%;
+`;
+
+export const FormFieldsWrapper = styled.div`
   width: 920px;
 
-  @media only screen and (max-width: 600px) {
-    width: 100%;
+  @media only screen and (max-width: 920px) {
+    display: 100%;
   }
 `;
+
+export const EmailContactWrapper = styled.div`
+  display: flex;
+  border-left: 3px solid #000000;
+  margin-left: 3rem;
+  align-items: center;
+
+  @media only screen and (max-width: 920px) {
+    display: none;
+  }
+`;
+
+export const EmailContact = styled.p`
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-left: 1rem;
+`;
+

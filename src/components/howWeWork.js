@@ -15,7 +15,7 @@ const HowWeWorkImage = styled.img`
   max-width: 300px;
   padding-top: 6rem;
 
-  @media only screen and (min-width: 1600px) {
+  @media only screen and (min-width: 1768px) {
     max-width: 450px;
     max-height: 300px;
   }
@@ -27,7 +27,7 @@ const HowWeWorkImageTwo = styled.img`
   padding-left: 5rem;
   padding-top: 10%;
 
-  @media only screen and (min-width: 1600px) {
+  @media only screen and (min-width: 1768px) {
     max-width: 380px;
     max-height: 250px;
   }
@@ -51,12 +51,12 @@ const StepTitle = styled.h3`
     background: #fff;
     transition: border 0.4s ease-in;
 
-    @media only screen and (max-width: 600px) {
+    @media only screen and (max-width: 768px) {
       top: 2.5rem;
     }
   }
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     margin-top: 1.5rem;
   }
 `;
@@ -140,7 +140,7 @@ const StepInfoWrapper = styled.div`
 `;
 
 const HowWeWorkSectionWrapper = styled(SectionWithSpaceAround)`
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     padding: 0;
   }
 `;

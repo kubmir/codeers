@@ -16,8 +16,8 @@ const ReasonImage = styled.img`
   max-width: 400px;
   max-height: 200px;
 
-  @media only screen and (min-width: 1600px) {
-    max-width: 600px;
+  @media only screen and (min-width: 1768px) {
+    max-width: 768px;
     max-height: 300px;
   }
 `;
@@ -28,9 +28,9 @@ const ReasonImageTwo = styled.img`
   max-width: 300px;
   max-height: 400px;
 
-  @media only screen and (min-width: 1600px) {
+  @media only screen and (min-width: 1768px) {
     max-width: 450px;
-    max-height: 600px;
+    max-height: 768px;
   }
 `;
 
@@ -38,16 +38,19 @@ const ReasonTitle = styled.h3`
   margin-top: 2rem;
   font-weight: 400;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     margin-top: 1.5rem;
   }
 `;
 
 const WhyUsWrapper = styled.div`
   display: flex;
+  margin: 8rem 0;
 
   @media only screen and (max-width: 768px) {
     display: block;
+    padding: 2rem 0;
+    margin: 3rem 0;
 
     &:before {
       content: ' ';
@@ -99,14 +102,6 @@ const ReasonsWrapper = styled.div`
   }
 `;
 
-const Spacer = styled.div`
-  height: 8rem;
-
-  @media only screen and (max-width: 768px) {
-    height: 3rem;
-  }
-`;
-
 const MainReasonInfo = styled.h3`
   font-weight: 400;
 `;
@@ -148,29 +143,25 @@ export const WhyUs = () => {
   const { t } = useTranslation();
 
   return (
-    <>
-      <Spacer />
-
-      <MobileWrapper>
-        <WhyUsWrapper>
-          <ReasonsWrapper>
-            <H2 style={{ marginTop: '2rem' }}>{t('proč zvolit codeers')}</H2>
-            <MainReasonInfo>
-              {t('Jsme zkušený tým vývojářů a designérů. Specializujeme se na mobilní aplikace.')}
-            </MainReasonInfo>
-            {getWhyUsData(t).map((step) => (
-              <div key={step.title}>
-                <ReasonTitle>{step.title}</ReasonTitle>
-                <Description>{step.description}</Description>
-              </div>
-            ))}
-          </ReasonsWrapper>
-          <ImageWrapper>
-            <ReasonImage src={whyUsImage} />
-            <ReasonImageTwo src={whyUsImageTwo} />
-          </ImageWrapper>
-        </WhyUsWrapper>
-      </MobileWrapper>
-    </>
+    <MobileWrapper>
+      <WhyUsWrapper>
+        <ReasonsWrapper>
+          <H2 style={{ marginTop: '2rem' }}>{t('proč zvolit codeers')}</H2>
+          <MainReasonInfo>
+            {t('Jsme zkušený tým vývojářů a designérů. Specializujeme se na mobilní aplikace.')}
+          </MainReasonInfo>
+          {getWhyUsData(t).map((step) => (
+            <div key={step.title}>
+              <ReasonTitle>{step.title}</ReasonTitle>
+              <Description>{step.description}</Description>
+            </div>
+          ))}
+        </ReasonsWrapper>
+        <ImageWrapper>
+          <ReasonImage src={whyUsImage} />
+          <ReasonImageTwo src={whyUsImageTwo} />
+        </ImageWrapper>
+      </WhyUsWrapper>
+    </MobileWrapper>
   );
 };

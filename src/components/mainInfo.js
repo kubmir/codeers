@@ -20,7 +20,7 @@ const MainHeading = styled.h1`
   animation-name: ${fadeIn};
   animation-duration: 4000ms;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     font-size: 2rem;
     line-height: 2.5rem;
   }
@@ -57,7 +57,7 @@ const Wrapper = styled.div`
 const SmallHeading = styled.span`
   font-size: 1.5rem;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     font-size: 1rem;
     line-height: 1.5rem;
   }
@@ -67,7 +67,7 @@ const HeadingWrapper = styled.div`
   flex-grow: 1;
   padding-left: 3.5rem;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     padding: 20px;
   }
 `;
@@ -82,7 +82,7 @@ const ImageWrapper = styled.div`
 const Image = styled.img`
   height: 100%;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     width: 100%;
     opacity: 0.25;
   }
@@ -94,7 +94,7 @@ const LogoWrapper = styled.div`
   padding-left: 3.5rem;
   padding-top: 1rem;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     padding: 20px;
   }
 `;
@@ -103,7 +103,7 @@ const Logo = styled.img`
   height: 60px;
   margin: 0;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     height: 48px;
   }
 `;

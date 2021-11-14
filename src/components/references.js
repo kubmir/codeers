@@ -17,7 +17,7 @@ const ReferenceImage = styled.img`
   animation-name: ${(props) => props.animation};
   animation-duration: 2000ms;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     width: 100%;
     max-width: 100%;
     animation-name: ${(props) => props.mobileAnimation || props.animation};
@@ -28,7 +28,7 @@ const ReferenceTitle = styled.p`
   font-size: 1.25rem;
   font-weight: 500;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     font-size: 1.25rem;
   }
 `;
@@ -44,7 +44,7 @@ const LeftReferenceInfoWrapper = styled.div`
   animation-name: ${(props) => props.animation};
   animation-duration: 2000ms;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     width: 100%;
   }
 `;
@@ -56,7 +56,7 @@ const TextWrapper = styled.div`
   width: 120%;
   margin-left: 3rem;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     position: relative;
     top: auto;
     margin-left: 0.5rem;
@@ -71,7 +71,7 @@ const ReferenceContainer = styled.div`
   overflow: hidden;
   height: 450px;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     padding: 0 1rem;
     width: calc(100% - 2rem);
     flex-direction: ${(props) => (props.reverseMobileOrder ? 'column' : 'column-reverse')};

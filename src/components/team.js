@@ -19,6 +19,10 @@ const MembersWrapper = styled.div`
   grid-column-gap: 10px;
   grid-row-gap: 2rem;
 
+  @media only screen and (max-width: 1024px) {
+    grid-template-columns: 50% 50%;
+  }
+
   @media only screen and (max-width: 600px) {
     display: block;
   }
@@ -37,7 +41,7 @@ const MemberName = styled.p`
   font-weight: 700;
   margin: 0;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     font-size: 1rem;
   }
 `;
@@ -46,7 +50,7 @@ const MemberTextWrapper = styled.div`
   padding: 0 1.5rem;
   text-align: start;
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 768px) {
     padding: 0 1rem;
   }
 `;
@@ -79,7 +83,6 @@ const getTeamMembers = (t) => [
   {
     image: others,
     name: t('a další'),
-    description: '+5',
   },
 ];
 

@@ -15,6 +15,9 @@ import {
   ContactWrapper,
   SuccessMessage,
   FormWrapper,
+  EmailContactWrapper,
+  EmailContact,
+  FormFieldsWrapper,
 } from './styled';
 
 import './styles.css';
@@ -64,8 +67,8 @@ export const ContactForm = () => {
   return (
     <ContactWrapper id="contactForm">
       <H2 style={{ marginTop: 0 }}>{t('kontaktujte nás')}</H2>
-      <div style={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
-        <FormWrapper>
+      <FormWrapper>
+        <FormFieldsWrapper>
           <ContactFormWrapper>
             <TextField
               id="name"
@@ -123,10 +126,13 @@ export const ContactForm = () => {
               size="small"
             />
           </TextAreaWrapper>
-          <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>
-          <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
-        </FormWrapper>
-      </div>
+        </FormFieldsWrapper>
+        <EmailContactWrapper>
+          <EmailContact>info@codeers.cz</EmailContact>
+        </EmailContactWrapper>
+      </FormWrapper>
+      <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>
+      <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
     </ContactWrapper>
   );
 };
