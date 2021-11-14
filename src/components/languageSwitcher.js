@@ -15,7 +15,7 @@ const Language = styled.div`
   width: 50px;
   line-height: 50px;
   text-align: center;
-  background-color: ${(props) => (props.active ? '#e8c81d' : 'transparent')};
+  background-color: ${(props) => (props.active ? '#e8c81d' : '#ffffff')};
 `;
 
 export const LanguageSwitcher = () => {

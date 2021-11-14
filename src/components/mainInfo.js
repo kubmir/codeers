@@ -7,6 +7,7 @@ import { fadeIn } from '../css/animations';
 import titleImage from '../svg/new/top.jpeg';
 import logo from '../svg/new/banner.svg';
 
+import { LanguageSwitcher } from './languageSwitcher';
 import './layout.css';
 
 const MainHeading = styled.h1`
@@ -65,7 +66,6 @@ const SmallHeading = styled.span`
 
 const HeadingWrapper = styled.div`
   flex-grow: 1;
-  padding-left: 3.5rem;
 
   @media only screen and (max-width: 768px) {
     padding: 20px;
@@ -91,8 +91,14 @@ const Image = styled.img`
 const LogoWrapper = styled.div`
   max-width: 400px;
   height: 60px;
-  padding-left: 3.5rem;
-  padding-top: 1rem;
+
+  @media only screen and (max-width: 768px) {
+    padding: 20px;
+  }
+`;
+
+const LanguageSwitcherWrapper = styled.div`
+  height: 60px;
 
   @media only screen and (max-width: 768px) {
     padding: 20px;
@@ -108,17 +114,29 @@ const Logo = styled.img`
   }
 `;
 
+const TopLineWrapper = styled.div`
+  display: flex;
+  padding-top: 2rem;
+  justify-content: space-between;
+`;
+
 export const MainInfo = () => {
   const { t } = useTranslation();
 
   return (
     <BackgroundProvider>
       <Wrapper>
-        <LogoWrapper>
-          <a href="https://codeers.cz" title="Codeers">
-            <Logo src={logo} />
-          </a>
-        </LogoWrapper>
+        <TopLineWrapper>
+          <LogoWrapper>
+            <a href="https://codeers.cz" title="Codeers">
+              <Logo src={logo} />
+            </a>
+          </LogoWrapper>
+
+          <LanguageSwitcherWrapper>
+            <LanguageSwitcher />
+          </LanguageSwitcherWrapper>
+        </TopLineWrapper>
 
         <HeadingWrapper>
           <MainHeading>
