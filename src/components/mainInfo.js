@@ -48,9 +48,14 @@ const Wrapper = styled.div`
   z-index: 99;
   width: 100%;
   margin: 0 auto;
+  padding: 3.5rem;
 
   @media only screen and (min-width: 1440px) {
     width: calc(1440px - 7rem);
+    padding: 0;
+  }
+
+  @media only screen and (max-width: 768px) {
     padding: 0;
   }
 `;
@@ -81,6 +86,7 @@ const ImageWrapper = styled.div`
 
 const Image = styled.img`
   height: 100%;
+  max-width: 100vw;
 
   @media only screen and (max-width: 768px) {
     width: 100%;
