@@ -66,27 +66,5 @@ export const FormWrapper = styled.div`
 `;
 
 export const FormFieldsWrapper = styled.div`
-  width: 920px;
-
-  @media only screen and (max-width: 920px) {
-    display: 100%;
-  }
+  width: 100%;
 `;
-
-export const EmailContactWrapper = styled.div`
-  display: flex;
-  border-left: 3px solid #000000;
-  margin-left: 3rem;
-  align-items: center;
-
-  @media only screen and (max-width: 920px) {
-    display: none;
-  }
-`;
-
-export const EmailContact = styled.p`
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-left: 1rem;
-`;
-

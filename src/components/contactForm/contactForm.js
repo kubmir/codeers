@@ -15,8 +15,6 @@ import {
   ContactWrapper,
   SuccessMessage,
   FormWrapper,
-  EmailContactWrapper,
-  EmailContact,
   FormFieldsWrapper,
 } from './styled';
 
@@ -127,9 +125,6 @@ export const ContactForm = () => {
             />
           </TextAreaWrapper>
         </FormFieldsWrapper>
-        <EmailContactWrapper>
-          <EmailContact>info@codeers.cz</EmailContact>
-        </EmailContactWrapper>
       </FormWrapper>
       <GdprInfoWrapper>{t('Odesláním souhlasíte se zpracováním osobních údajů.')}</GdprInfoWrapper>
       <SendButtonWrapper onClick={onSubmit}>{t('odeslat')}</SendButtonWrapper>
