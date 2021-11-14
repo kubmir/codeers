@@ -13,7 +13,7 @@ import './layout.css';
 const HowWeWorkImage = styled.img`
   max-height: 200px;
   max-width: 300px;
-  padding-top: 6rem;
+  padding-top: 15%;
 
   @media only screen and (min-width: 1768px) {
     max-width: 450px;
@@ -22,8 +22,8 @@ const HowWeWorkImage = styled.img`
 `;
 
 const HowWeWorkImageTwo = styled.img`
-  max-height: 175px;
-  max-width: 260px;
+  max-height: 225px;
+  max-width: 320px;
   padding-left: 5rem;
   padding-top: 10%;
 

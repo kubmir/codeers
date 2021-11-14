@@ -16,6 +16,7 @@ const ReferenceImage = styled.img`
   max-width: 50%;
   animation-name: ${(props) => props.animation};
   animation-duration: 2000ms;
+  max-height: 350px;
 
   @media only screen and (max-width: 768px) {
     width: 100%;
