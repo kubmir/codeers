@@ -8,7 +8,7 @@ import { fadeIn } from '../css/animations';
 import michal from '../svg/new/faces/michal.png';
 import rado from '../svg/new/faces/rado.png';
 import sarka from '../svg/new/faces/sarka.png';
-import others from '../svg/new/faces/others.png';
+import others from '../svg/new/faces/person.png';
 
 import { Description, H2 } from './shared';
 
