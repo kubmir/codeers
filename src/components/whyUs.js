@@ -108,7 +108,7 @@ const MainReasonInfo = styled.h3`
 
 const getWhyUsData = (t) => [
   {
-    title: t('jsme zkušený tým vývojářů a designérů specializujících se na mobilní aplikace'),
+    title: t('jsme zkušený tým vývojářů a designérů, specializujeme se na mobilní aplikace'),
     description: t(
       'Díky tomu máme dobře zavedené procesy a fungující tým. Věříme, že dobře vyvinutá a navržená aplikace může lidem pomoci ve všech oblastech podnikání či každodenního života.',
     ),
