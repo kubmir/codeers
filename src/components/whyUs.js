@@ -108,7 +108,7 @@ const MainReasonInfo = styled.h3`
 
 const getWhyUsData = (t) => [
   {
-    title: t('sme zkušený a sehraný tým vývojářů a designérů'),
+    title: t('jsme zkušený tým vývojářů a designérů specializujících se na mobilní aplikace'),
     description: t(
       'Díky tomu máme dobře zavedené procesy a fungující tým. Věříme, že dobře vyvinutá a navržená aplikace může lidem pomoci ve všech oblastech podnikání či každodenního života.',
     ),
@@ -147,9 +147,6 @@ export const WhyUs = () => {
       <WhyUsWrapper>
         <ReasonsWrapper>
           <H2 style={{ marginTop: '2rem' }}>{t('proč zvolit codeers')}</H2>
-          <MainReasonInfo>
-            {t('Jsme zkušený tým vývojářů a designérů. Specializujeme se na mobilní aplikace.')}
-          </MainReasonInfo>
           {getWhyUsData(t).map((step) => (
             <div key={step.title}>
               <ReasonTitle>{step.title}</ReasonTitle>
