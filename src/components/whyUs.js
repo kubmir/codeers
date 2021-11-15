@@ -102,10 +102,6 @@ const ReasonsWrapper = styled.div`
   }
 `;
 
-const MainReasonInfo = styled.h3`
-  font-weight: 400;
-`;
-
 const getWhyUsData = (t) => [
   {
     title: t('jsme zkušený a sehraný tým vývojářů a designérů'),
